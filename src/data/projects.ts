@@ -20,13 +20,13 @@ export const projects: Project[] = [
     id: 'cognilaw',
     title: 'Cognilaw',
     description:
-      'Building and evaluating a Retrieval-Augmented Generation pipeline specifically designed for the legal profession. The core challenge is hallucination reduction — legal AI that cites non-existent cases is worse than no AI at all. Working on custom retrieval strategies, evaluation metrics, and an iterative optimisation loop.',
+      'Building and evaluating a Retrieval-Augmented Generation pipeline specifically designed for the legal profession. The core challenge is hallucination reduction: legal AI that cites non-existent cases is worse than no AI at all. Working on custom retrieval strategies, evaluation metrics, and an iterative optimisation loop.',
     tier: 1,
     badge: { label: 'Active · AI Researcher', color: 'cyan' },
-    primaryImage: 'cognilaw/cognilaw_architecture.jfif',
+    primaryImage: 'cognilaw/cognilaw_basic_architecture.jfif',
     galleryImages: [
-      'cognilaw/cognilaw_architecture.jfif',
       'cognilaw/cognilaw_basic_architecture.jfif',
+      'cognilaw/cognilaw_architecture.jfif',
       'cognilaw/cognilaw_hallucination_eval.png',
       'cognilaw/AI%26Society_Cognilaw_presentation.jfif',
       'cognilaw/AI%26Society_Cognilaw_presentation_everyone_picture.jfif',
@@ -37,13 +37,13 @@ export const projects: Project[] = [
     id: 'reid',
     title: 'Agentic AI for Person Re-Identification',
     description:
-      'Multi-agent architecture where specialised agents reason over complementary cues — appearance, body composition, gait, and physical attributes — to identify individuals across camera feeds. Confidence-weighted voting makes the system robust to occlusion and appearance changes.',
+      'Multi-agent architecture where specialised agents reason over complementary cues (appearance, body composition, gait, and physical attributes) to identify individuals across camera feeds. Confidence-weighted voting makes the system robust to occlusion and appearance changes.',
     tier: 1,
     badge: { label: 'QUT Research', color: 'indigo' },
-    primaryImage: 'AgenticAI_for_Video_Re-Identification/Re-ID_problem.png',
+    primaryImage: 'AgenticAI_for_Video_Re-Identification/Agentic_solution.jpg',
     galleryImages: [
-      'AgenticAI_for_Video_Re-Identification/Re-ID_problem.png',
       'AgenticAI_for_Video_Re-Identification/Agentic_solution.jpg',
+      'AgenticAI_for_Video_Re-Identification/Re-ID_problem.png',
     ],
     tags: ['Computer Vision', 'Multi-Agent', 'Re-Identification', 'LLM'],
   },
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     id: 'nti',
     title: 'NTI Insurance Fraud Detection Dashboard',
     description:
-      'Leading a team of 30+ QUT AIML Society members to build a predictive analytics dashboard on NTI insurance data — detecting fraudulent and anomalous claims, and forecasting claim delays. Combines data science, dashboarding, and ML model development on a real-world industry dataset.',
+      'Leading a team of 30+ QUT AIML Society members to build a predictive analytics dashboard on NTI insurance data, detecting fraudulent and anomalous claims and forecasting claim delays. Combines data science, dashboarding, and ML model development on a real-world industry dataset.',
     tier: 1,
     badge: { label: 'Team Lead · 30+ Members', color: 'teal' },
     primaryImage: 'QUT_AIML/QUT_AIML_first_NTI_project_night.jfif',
@@ -114,13 +114,15 @@ export const projects: Project[] = [
     description:
       'Optimised a pose estimation model for Jetson Nano edge devices at Asilla, achieving a 20% precision improvement while maintaining real-time inference speed through model compression and quantisation.',
     tier: 2,
+    primaryImage: 'Human_Pose_Estimation_on_Edge/Human_pose_model_pipeline.PNG',
+    galleryImages: ['Human_Pose_Estimation_on_Edge/Human_pose_model_pipeline.PNG'],
     tags: ['Computer Vision', 'Edge AI', 'Model Optimisation', 'Jetson Nano'],
   },
   {
     id: 'jarvis',
     title: 'Jarvis',
     description:
-      'Conversational AI agent built at QUT\'s AI Hackathon in 48 hours. Students talk to Jarvis to manage deadlines, exams, and work shifts — it also connects students with shared food preferences for on-campus dining.',
+      'Conversational AI agent built at QUT\'s AI Hackathon in 48 hours. Students talk to Jarvis to manage deadlines, exams, and work shifts. It also connects students with shared food preferences for on-campus dining.',
     tier: 2,
     badge: { label: 'QUT AI Hackathon', color: 'indigo' },
     primaryImage: 'QUT_AIML_hackathon_Jarvis/Jarvis_opening_page.jfif',
@@ -136,7 +138,7 @@ export const projects: Project[] = [
     id: 'safemind',
     title: 'SafeMind',
     description:
-      'Most Viable award at TANDA GenAI Hackathon. Voice-powered OHS incident reporting for injured workers — SafeMind captures evidence via voice and automatically pre-fills WorkCover claim forms, reducing hours of paperwork to minutes.',
+      'Most Viable award at TANDA GenAI Hackathon. Voice-powered OHS incident reporting for injured workers. SafeMind captures evidence via voice and automatically pre-fills WorkCover claim forms, reducing hours of paperwork to minutes.',
     tier: 2,
     badge: { label: 'Most Viable · TANDA', color: 'gold' },
     primaryImage: 'Tanda_hackathon_Safemind/Safe_mind_prize.jfif',
@@ -151,7 +153,7 @@ export const projects: Project[] = [
     id: 'capture',
     title: 'Capture the Narrative',
     description:
-      '1st Place at UNSW National AI Competition. Developed GenAI bots that strategically influence voter sentiment through targeted content. In simulation, shifted a projected 49.5% loss to a 51.2% victory — demonstrating both the power and risk of AI in political communication.',
+      '1st Place at UNSW National AI Competition. Developed GenAI bots that strategically influence voter sentiment through targeted content. In simulation, shifted a projected 49.5% loss to a 51.2% victory, demonstrating both the power and risk of AI in political communication.',
     tier: 2,
     badge: { label: '1st Place · UNSW National', color: 'gold' },
     primaryImage: 'Capture_the_narrative/capture_the_narrative_prize.jfif',
