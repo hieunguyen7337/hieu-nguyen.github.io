@@ -27,13 +27,14 @@ export interface EducationEntry {
   institution: string;
   degree: string;
   period: string;
+  grade?: string;
 }
 
 export const experience: ExperienceEntry[] = [
   {
     id: 'cognilaw',
     company: 'Cognilaw',
-    location: 'Brisbane City, QLD',
+    location: 'Brisbane, Queensland, Australia',
     roles: [{ title: 'AI Researcher', period: 'January 2026 – Present' }],
     description:
       'Building a production RAG pipeline for legal professionals, focused on hallucination reduction, retrieval quality, and evaluation metrics.',
@@ -45,7 +46,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'qut-tech',
     company: 'QUT The Emerging Coders Hub (TECH)',
-    location: 'Brisbane, Queensland',
+    location: 'Brisbane, Queensland, Australia',
     roles: [{ title: 'Vice President', period: 'October 2025 – Present' }],
     description:
       'Organise workshops to teach beginners in coding and IT how to build chatbots, personal websites, and AI agents.',
@@ -62,7 +63,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'qut-aiml',
     company: 'QUT AI & ML Society',
-    location: 'Brisbane, Queensland',
+    location: 'Brisbane, Queensland, Australia',
     roles: [{ title: 'Project Manager', period: 'September 2025 – Present' }],
     description:
       'Manage a team of 30+ club members researching and building an insurance analytics dashboard on NTI data to predict claim delays and detect fraud.',
@@ -75,7 +76,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'qut-ra',
     company: 'Queensland University of Technology',
-    location: 'Brisbane City, QLD',
+    location: 'Brisbane, Queensland, Australia',
     roles: [{ title: 'Research Assistant', period: 'September 2025 – Present' }],
     description:
       'Two active research streams: (1) transformer-based biomedical NLP for protein interaction extraction; (2) multi-agent computer vision for person re-identification.',
@@ -83,7 +84,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'viettel',
     company: 'Viettel Post',
-    location: 'Vietnam',
+    location: 'Hanoi, Vietnam',
     roles: [{ title: 'AI Software Engineer', period: 'April 2023 – November 2024' }],
     description:
       "Built NLP models for logistics operations including call centre analysis, churn prediction, and route optimisation for one of Vietnam's largest postal companies.",
@@ -91,7 +92,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'fpt',
     company: 'FPT Software',
-    location: 'Cầu Giấy, Hanoi, Vietnam',
+    location: 'Hanoi, Vietnam',
     roles: [{ title: 'AI Software Engineer', period: 'October 2021 – March 2023' }],
     description:
       'Developed and deployed the backend of the Sound AI MLOps platform (in production at Samsung) plus text summarisation and code generation applications.',
@@ -99,7 +100,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: 'asilla',
     company: 'Asilla',
-    location: 'Cầu Giấy, Hanoi, Vietnam',
+    location: 'Hanoi, Vietnam',
     roles: [{ title: 'Research Intern', period: 'April 2021 – July 2021' }],
     description:
       'Improved human pose detection precision by 20% through model compression and advanced computer vision techniques on Jetson Nano edge devices.',
@@ -111,6 +112,7 @@ export const education: EducationEntry[] = [
     institution: 'Queensland University of Technology',
     degree: "Master's degree, Artificial Intelligence",
     period: 'February 2025 – November 2026',
+    grade: 'GPA 6.5 / 7.0',
   },
   {
     institution: 'University of Science and Technology of Ha Noi',

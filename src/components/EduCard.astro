@@ -35,5 +35,6 @@ const { entry } = Astro.props;
     <h3 class="font-display font-bold text-slate-100">{entry.institution}</h3>
     <div class="text-purple-400 font-medium text-sm mt-0.5">{entry.degree}</div>
     <div class="text-slate-500 text-sm mt-1">{entry.period}</div>
+    {entry.grade && <div class="text-slate-400 text-sm mt-0.5">{entry.grade}</div>}
   </div>
 </div>

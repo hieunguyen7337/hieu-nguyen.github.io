@@ -129,6 +129,7 @@ export const projects: Project[] = [
     primaryImage: 'Human_Pose_Estimation_on_Edge/Human_pose_model_pipeline.PNG',
     galleryImages: ['Human_Pose_Estimation_on_Edge/Human_pose_model_pipeline.PNG'],
     tags: ['Computer Vision', 'Edge AI', 'Model Optimisation', 'Jetson Nano'],
+    links: [{ label: 'GitHub', url: 'https://github.com/hieunguyen7337/trt_pose_edited' }],
   },
   {
     id: 'jarvis',
