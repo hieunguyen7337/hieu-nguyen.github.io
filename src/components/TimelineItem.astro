@@ -43,6 +43,26 @@ const photoGalleryJson = hasPhotos
     <p class="text-slate-400 text-sm leading-[1.8]">{entry.description}</p>
 
     {
+      entry.links?.length && (
+        <div class="flex flex-wrap gap-1.5 mt-3">
+          {entry.links.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full border border-slate-600/50 bg-white/[0.04] text-slate-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-all duration-200"
+            >
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )
+    }
+
+    {
       hasPhotos && (
         <div class="photo-strip flex gap-2 overflow-x-auto mt-4 pb-1">
           {entry.photoStrip!.map((photo, i) => (

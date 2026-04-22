@@ -8,6 +8,11 @@ export interface Role {
   period: string;
 }
 
+export interface ExperienceLink {
+  label: string;
+  url: string;
+}
+
 export interface ExperienceEntry {
   id: string;
   company: string;
@@ -15,6 +20,7 @@ export interface ExperienceEntry {
   roles: Role[];
   description: string;
   photoStrip?: PhotoItem[];
+  links?: ExperienceLink[];
 }
 
 export interface EducationEntry {
@@ -47,6 +53,10 @@ export const experience: ExperienceEntry[] = [
       { src: 'QUT_TECH/QUT_TECH_member.png', alt: 'QUT TECH members' },
       { src: 'QUT_TECH/QUT_TECH_project.jfif', alt: 'QUT TECH project showcase' },
       { src: 'QUT_TECH/QUT_TECH_feedback.jpg', alt: 'QUT TECH feedback session' },
+    ],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/QUT-TECH' },
+      { label: 'Workshop Feedback', url: 'https://www.instagram.com/stories/highlights/18160688248434308/' },
     ],
   },
   {

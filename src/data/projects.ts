@@ -3,6 +3,11 @@ export interface Badge {
   color: 'cyan' | 'indigo' | 'teal' | 'gold';
 }
 
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -12,6 +17,7 @@ export interface Project {
   primaryImage?: string;
   galleryImages?: string[];
   tags: string[];
+  links?: ProjectLink[];
 }
 
 export const projects: Project[] = [
@@ -32,6 +38,7 @@ export const projects: Project[] = [
       'cognilaw/AI%26Society_Cognilaw_presentation_everyone_picture.jfif',
     ],
     tags: ['RAG', 'LLM', 'Hallucination Reduction', 'Legal AI', 'Python'],
+    links: [{ label: 'Website', url: 'https://cognilawai.com/' }],
   },
   {
     id: 'reid',
@@ -65,7 +72,7 @@ export const projects: Project[] = [
     id: 'nti',
     title: 'NTI Insurance Fraud Detection Dashboard',
     description:
-      'Leading a team of 30+ QUT AIML Society members to build a predictive analytics dashboard on NTI insurance data, detecting fraudulent and anomalous claims and forecasting claim delays. Combines data science, dashboarding, and ML model development on a real-world industry dataset.',
+      'Leading a team of 30+ QUT AIML Society members to build a predictive analytics dashboard on NTI insurance data, detecting fraudulent and anomalous claims and forecasting claim delays. Combines data science, software engineering, and ML model development on a real-world industry dataset.',
     tier: 1,
     badge: { label: 'Team Lead · 30+ Members', color: 'teal' },
     primaryImage: 'QUT_AIML/QUT_AIML_first_NTI_project_night.jfif',
@@ -75,6 +82,10 @@ export const projects: Project[] = [
       'QUT_AIML/QUT_AIML_first_week.jfif',
     ],
     tags: ['Data Science', 'Fraud Detection', 'Dashboard', 'ML', 'Team Lead'],
+    links: [
+      { label: 'Frontend', url: 'https://github.com/QUT-AIML/NTI_Project_Frontend' },
+      { label: 'Backend', url: 'https://github.com/QUT-AIML/NTI_Project_Backend' },
+    ],
   },
 
   // ── TIER 2: Industry, Research & Hackathons ──────────────────────────────
@@ -107,6 +118,7 @@ export const projects: Project[] = [
     primaryImage: 'SoundAI/Sound_AI_platform.png',
     galleryImages: ['SoundAI/Sound_AI_platform.png', 'SoundAI/Sound_AI_workflow.png'],
     tags: ['MLOps', 'FastAPI', 'Docker', 'Production', 'Samsung'],
+    links: [{ label: 'FPT Patent', url: 'https://fptsoftware.com/newsroom/news-and-press-releases/news/fpt-achieves-us-patent-for-advanced-acoustic-anomaly-detection-technology' }],
   },
   {
     id: 'pose',
