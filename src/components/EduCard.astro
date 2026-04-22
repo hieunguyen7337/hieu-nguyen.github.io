@@ -1,0 +1,39 @@
+---
+import type { EducationEntry } from '../data/experience';
+
+interface Props {
+  entry: EducationEntry;
+}
+
+const { entry } = Astro.props;
+---
+
+<div
+  class="border border-white/[0.08] bg-white/[0.04] rounded-2xl p-6 flex items-center gap-5 hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(192,132,252,0.08)] transition-all duration-300"
+>
+  <!-- Icon -->
+  <div
+    class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 text-purple-400"
+  >
+    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="M12 14l9-5-9-5-9 5 9 5z"
+      ></path>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+      ></path>
+    </svg>
+  </div>
+
+  <div>
+    <h3 class="font-display font-bold text-slate-100">{entry.institution}</h3>
+    <div class="text-purple-400 font-medium text-sm mt-0.5">{entry.degree}</div>
+    <div class="text-slate-500 text-sm mt-1">{entry.period}</div>
+  </div>
+</div>

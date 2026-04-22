@@ -1,0 +1,75 @@
+---
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 h-[60px] bg-[#08090f]/80 backdrop-blur-xl border-b border-white/[0.06] transition-shadow duration-300"
+>
+  <div class="max-w-content mx-auto px-6 h-full flex items-center justify-between">
+    <!-- Logo -->
+    <a
+      href="#hero"
+      class="font-display font-bold text-lg bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
+    >
+      Hieu Nguyen
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-1 list-none m-0 p-0">
+      <li>
+        <a href="#about" data-section="about" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+          About
+        </a>
+      </li>
+      <li>
+        <a href="#projects" data-section="projects" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+          Projects
+        </a>
+      </li>
+      <li>
+        <a href="#experience" data-section="experience" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+          Experience
+        </a>
+      </li>
+      <li>
+        <a href="#education" data-section="education" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+          Education
+        </a>
+      </li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button
+      id="hamburger"
+      class="md:hidden flex flex-col gap-[5px] p-2 rounded-lg"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span class="block w-[22px] h-[2px] bg-slate-100 rounded transition-all duration-300"></span>
+      <span class="block w-[22px] h-[2px] bg-slate-100 rounded transition-all duration-300"></span>
+      <span class="block w-[22px] h-[2px] bg-slate-100 rounded transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div
+    id="mobile-nav"
+    class="md:hidden fixed inset-0 top-[60px] bg-[#08090f]/97 backdrop-blur-xl hidden flex-col items-center justify-center gap-8"
+  >
+    <a href="#about"      class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">About</a>
+    <a href="#projects"   class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Projects</a>
+    <a href="#experience" class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Experience</a>
+    <a href="#education"  class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Education</a>
+  </div>
+</nav>
+
+<style>
+  .nav-link.active {
+    color: rgb(129, 140, 248);
+    background: rgba(99, 102, 241, 0.12);
+  }
+  #hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #hamburger.open span:nth-child(2) { opacity: 0; }
+  #hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  #mobile-nav.open { display: flex; }
+</style>

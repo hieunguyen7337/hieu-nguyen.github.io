@@ -1,0 +1,154 @@
+---
+import { asset } from '../utils/asset';
+---
+
+<section id="hero" class="relative overflow-hidden min-h-screen flex items-center pt-[60px]">
+  <!-- Ambient mesh -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse 65% 55% at 12% 50%, rgba(99,102,241,0.09) 0%, transparent 70%), radial-gradient(ellipse 55% 65% at 88% 25%, rgba(6,182,212,0.07) 0%, transparent 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="max-w-content mx-auto px-6 py-20 w-full relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+      <!-- Photo (right on desktop, top on mobile) -->
+      <div class="flex justify-center order-first md:order-last">
+        <div class="photo-ring">
+          <img
+            src={asset('personal_profile_photo.jpg')}
+            alt="Hieu Nguyen"
+            class="profile-photo"
+          />
+        </div>
+      </div>
+
+      <!-- Text (left on desktop, bottom on mobile) -->
+      <div class="order-last md:order-first text-center md:text-left">
+        <p class="text-cyan-400 text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+          AI Engineer · Brisbane, Australia
+        </p>
+        <h1
+          class="font-display font-extrabold leading-[1.08] mb-4 bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
+          style="font-size: clamp(2.6rem, 5.5vw, 4.5rem);"
+        >
+          Hieu Nguyen
+        </h1>
+        <p class="text-slate-400 text-lg mb-5 font-light">Master of AI @ QUT</p>
+        <p class="text-slate-400 leading-[1.85] mb-8 max-w-[500px] mx-auto md:mx-0" style="font-size: 1.05rem;">
+          Vietnamese AI engineer building systems that ship to production — from MLOps platforms on
+          Samsung factory floors to RAG pipelines for legal professionals. Currently at Cognilaw +
+          QUT Research.
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <a href="mailto:hieu7337@gmail.com" class="btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Email Me
+          </a>
+          <a
+            href="https://www.linkedin.com/in/hieu-nguyen-3347a125b"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost"
+          >
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/hieunguyen7337"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost"
+          >
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .photo-ring {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    padding: 4px;
+    background: conic-gradient(from 0deg, #6366f1, #06b6d4, #6366f1);
+    animation: spin-ring 5s linear infinite;
+    flex-shrink: 0;
+  }
+  .photo-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #6366f1, #06b6d4, #6366f1);
+    filter: blur(16px);
+    opacity: 0.35;
+    animation: spin-ring 5s linear infinite;
+    z-index: -1;
+  }
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 3px solid #08090f;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+  .btn-ghost:hover {
+    border-color: #6366f1;
+    color: #818cf8;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .photo-ring { width: 200px; height: 200px; }
+  }
+</style>

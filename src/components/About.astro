@@ -1,0 +1,58 @@
+---
+const skillCategories = [
+  {
+    label: 'NLP & LLMs',
+    skills: ['Transformer Models', 'LLM Fine-tuning', 'RAG Systems', 'NLP'],
+  },
+  {
+    label: 'Computer Vision',
+    skills: ['Person Re-Identification', 'Pose Estimation', 'Edge Deployment'],
+  },
+  {
+    label: 'ML Engineering',
+    skills: ['MLOps', 'Model Deployment', 'API Integration', 'Data Science'],
+  },
+  {
+    label: 'Research',
+    skills: ['Bioinformatics', 'Information Retrieval', 'Reinforcement Learning'],
+  },
+];
+---
+
+<section id="about" class="py-24">
+  <div class="max-w-content mx-auto px-6">
+    <h2 class="section-title">About Me</h2>
+    <div
+      class="border border-white/[0.08] bg-white/[0.04] rounded-2xl p-8 md:p-10 backdrop-blur-sm hover:border-indigo-500/30 transition-all duration-300"
+    >
+      <p class="text-slate-400 leading-[1.9] mb-10" style="font-size: 1.05rem;">
+        I'm a Vietnamese AI engineer based in Brisbane, Australia. After 3+ years building
+        production AI systems at FPT Software and Viettel Post in Vietnam — from MLOps platforms
+        deployed on Samsung factory floors to NLP pipelines processing millions of customer calls —
+        I moved to Australia to pursue a Master of AI at QUT and push deeper into research. I'm
+        currently an AI Researcher at Cognilaw, a Research Assistant at QUT, and lead community
+        roles at two university tech clubs. I care about AI that actually ships and solves real
+        problems.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {
+          skillCategories.map((cat) => (
+            <div>
+              <h4 class="text-[11px] font-semibold text-cyan-400 tracking-[0.15em] uppercase mb-3">
+                {cat.label}
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span class="text-xs px-3 py-1 rounded-full bg-indigo-500/[0.08] text-slate-400 border border-indigo-500/20 hover:text-slate-200 hover:bg-indigo-500/15 transition-all duration-200 cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+---
+---
+
+<div
+  id="lightbox"
+  class="lightbox-overlay"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+>
+  <div id="lb-backdrop" class="absolute inset-0 bg-[#08090f]/95 backdrop-blur-md"></div>
+
+  <button
+    id="lb-close"
+    class="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/[0.08] border border-white/10 text-slate-400 hover:text-white hover:border-indigo-400 flex items-center justify-center text-2xl leading-none transition-all duration-200"
+    aria-label="Close"
+  >
+    &times;
+  </button>
+
+  <button
+    id="lb-prev"
+    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/[0.08] border border-white/10 text-slate-300 hover:border-indigo-400 hover:text-indigo-300 flex items-center justify-center text-3xl leading-none transition-all duration-200"
+    aria-label="Previous"
+  >
+    &#8249;
+  </button>
+
+  <div class="relative z-10 flex items-center justify-center max-w-[90vw] max-h-[85vh]">
+    <img
+      id="lb-img"
+      src=""
+      alt=""
+      class="max-w-[90vw] max-h-[85vh] rounded-xl object-contain border border-white/[0.08] shadow-2xl transition-opacity duration-200"
+    />
+  </div>
+
+  <button
+    id="lb-next"
+    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/[0.08] border border-white/10 text-slate-300 hover:border-indigo-400 hover:text-indigo-300 flex items-center justify-center text-3xl leading-none transition-all duration-200"
+    aria-label="Next"
+  >
+    &#8250;
+  </button>
+
+  <div
+    id="lb-counter"
+    class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-sm text-slate-500 select-none"
+  ></div>
+</div>
+
+<style>
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-overlay.open {
+    display: flex;
+  }
+</style>

@@ -1,0 +1,192 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import FeaturedCard from '../components/FeaturedCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TimelineItem from '../components/TimelineItem.astro';
+import EduCard from '../components/EduCard.astro';
+import Lightbox from '../components/Lightbox.astro';
+import Footer from '../components/Footer.astro';
+import { tier1, tier2 } from '../data/projects';
+import { experience, education } from '../data/experience';
+---
+
+<Base>
+  <Navbar />
+
+  <main>
+    <Hero />
+    <About />
+
+    <!-- ── Projects ──────────────────────────────────────────────── -->
+    <section id="projects" class="py-24">
+      <div class="max-w-content mx-auto px-6">
+        <h2 class="section-title">Projects</h2>
+
+        <!-- Tier 1: Featured Research & Active Work -->
+        <div class="flex flex-col gap-5 mb-14">
+          {tier1.map((project) => <FeaturedCard project={project} />)}
+        </div>
+
+        <!-- Tier 2: Industry, Research & Hackathons -->
+        <p class="text-[11px] font-semibold text-slate-500 tracking-[0.18em] uppercase mb-5">
+          Industry, Research &amp; Hackathons
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {tier2.map((project) => <ProjectCard project={project} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Experience ────────────────────────────────────────────── -->
+    <section id="experience" class="py-24">
+      <div class="max-w-content mx-auto px-6">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline-wrap">
+          {experience.map((entry) => <TimelineItem entry={entry} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Education ─────────────────────────────────────────────── -->
+    <section id="education" class="py-24 pb-32">
+      <div class="max-w-content mx-auto px-6">
+        <h2 class="section-title">Education</h2>
+        <div class="flex flex-col gap-4">
+          {education.map((entry) => <EduCard entry={entry} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <Lightbox />
+</Base>
+
+<script>
+  // ── Scroll-spy ───────────────────────────────────────────────────
+  const navbar = document.getElementById('navbar')!;
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link[data-section]');
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          navLinks.forEach((a) => a.classList.remove('active'));
+          const match = document.querySelector<HTMLAnchorElement>(
+            `.nav-link[data-section="${entry.target.id}"]`,
+          );
+          match?.classList.add('active');
+        }
+      }
+    },
+    { rootMargin: '-61px 0px -60% 0px', threshold: 0 },
+  );
+
+  sections.forEach((s) => sectionObserver.observe(s));
+
+  window.addEventListener(
+    'scroll',
+    () => navbar.classList.toggle('scrolled', window.scrollY > 20),
+    { passive: true },
+  );
+
+  // ── Hamburger menu ───────────────────────────────────────────────
+  const hamburger = document.getElementById('hamburger')!;
+  const mobileNav = document.getElementById('mobile-nav')!;
+
+  hamburger.addEventListener('click', () => {
+    const opening = !mobileNav.classList.contains('open');
+    mobileNav.classList.toggle('open', opening);
+    mobileNav.classList.toggle('hidden', !opening);
+    hamburger.classList.toggle('open', opening);
+    hamburger.setAttribute('aria-expanded', String(opening));
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      mobileNav.classList.add('hidden');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Lightbox ─────────────────────────────────────────────────────
+  const lightbox = document.getElementById('lightbox')!;
+  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+  const lbCounter = document.getElementById('lb-counter')!;
+  const lbClose = document.getElementById('lb-close')!;
+  const lbPrev = document.getElementById('lb-prev')!;
+  const lbNext = document.getElementById('lb-next')!;
+  const lbBackdrop = document.getElementById('lb-backdrop')!;
+
+  let gallery: string[] = [];
+  let idx = 0;
+
+  function showImg() {
+    lbImg.style.opacity = '0';
+    setTimeout(() => {
+      lbImg.src = gallery[idx];
+      lbImg.alt = `Image ${idx + 1} of ${gallery.length}`;
+      lbImg.style.opacity = '1';
+    }, 120);
+    lbCounter.textContent = gallery.length > 1 ? `${idx + 1} / ${gallery.length}` : '';
+    lbPrev.style.display = gallery.length > 1 ? 'flex' : 'none';
+    lbNext.style.display = gallery.length > 1 ? 'flex' : 'none';
+  }
+
+  function openLightbox(images: string[], startIdx = 0) {
+    gallery = images;
+    idx = startIdx;
+    showImg();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbBackdrop.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => {
+    idx = (idx - 1 + gallery.length) % gallery.length;
+    showImg();
+  });
+  lbNext.addEventListener('click', () => {
+    idx = (idx + 1) % gallery.length;
+    showImg();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { idx = (idx - 1 + gallery.length) % gallery.length; showImg(); }
+    if (e.key === 'ArrowRight') { idx = (idx + 1) % gallery.length; showImg(); }
+  });
+
+  // Gallery trigger buttons (project cards)
+  document.querySelectorAll<HTMLButtonElement>('.gallery-trigger[data-gallery]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const images: string[] = JSON.parse(btn.dataset.gallery!);
+      openLightbox(images, 0);
+    });
+  });
+
+  // Photo strip thumbnails (experience section)
+  document.querySelectorAll<HTMLImageElement>('img.gallery-strip-img').forEach((img) => {
+    img.addEventListener('click', () => {
+      const images: string[] = JSON.parse(img.dataset.gallery!);
+      const startIdx = parseInt(img.dataset.index ?? '0', 10);
+      openLightbox(images, startIdx);
+    });
+  });
+</script>

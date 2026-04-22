@@ -1,0 +1,88 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Hieu Nguyen — AI Engineer',
+  description =
+    'Portfolio of Hieu Nguyen, AI Engineer specialising in LLMs, computer vision, and production ML systems. Based in Brisbane, Australia.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#08090f] text-slate-100 font-sans antialiased min-h-screen">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 76px;
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #08090f; }
+  ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-title::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to right, rgba(99, 102, 241, 0.4), transparent);
+  }
+
+  /* Timeline vertical rule */
+  .timeline-wrap {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .timeline-wrap::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 28px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #6366f1, rgba(6, 182, 212, 0.3), transparent);
+  }
+
+  /* Nav scrolled shadow */
+  #navbar.scrolled {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Animated gradient ring */
+  @keyframes spin-ring {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Photo strip scrollbar */
+  .photo-strip::-webkit-scrollbar { height: 3px; }
+  .photo-strip::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+</style>

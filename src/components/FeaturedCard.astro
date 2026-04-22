@@ -1,0 +1,116 @@
+---
+import type { Project } from '../data/projects';
+import { asset } from '../utils/asset';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const badgeClasses: Record<string, string> = {
+  cyan:   'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
+  indigo: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40',
+  teal:   'bg-teal-500/20 text-teal-300 border-teal-500/40',
+  gold:   'bg-amber-500/15 text-amber-300 border-amber-500/35',
+};
+
+const hasGallery = (project.galleryImages?.length ?? 0) > 1;
+const galleryJson = hasGallery
+  ? JSON.stringify(project.galleryImages!.map((img) => asset(img)))
+  : '';
+---
+
+<article class="featured-card group">
+  <!-- Image column -->
+  <div class="featured-img-wrap">
+    {
+      project.primaryImage ? (
+        <img
+          src={asset(project.primaryImage)}
+          alt={project.title}
+          loading="lazy"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-500/10 to-cyan-500/10">
+          <span class="text-slate-600 text-sm">No preview</span>
+        </div>
+      )
+    }
+    {
+      project.badge && (
+        <span
+          class={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold border ${badgeClasses[project.badge.color]}`}
+        >
+          {project.badge.label}
+        </span>
+      )
+    }
+  </div>
+
+  <!-- Text column -->
+  <div class="featured-body">
+    <div class="flex flex-wrap gap-2 mb-4">
+      {
+        project.tags.map((tag) => (
+          <span class="text-xs px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+    <h3 class="font-display font-bold text-xl text-slate-100 mb-3 leading-snug">
+      {project.title}
+    </h3>
+    <p class="text-slate-400 text-[0.95rem] leading-[1.8] flex-1">
+      {project.description}
+    </p>
+    {
+      hasGallery && (
+        <button
+          class="gallery-trigger mt-5 self-start text-sm text-cyan-400 border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 rounded-full hover:bg-cyan-500/20 transition-all duration-200 cursor-pointer"
+          data-gallery={galleryJson}
+          aria-label={`View ${project.galleryImages!.length} images for ${project.title}`}
+        >
+          View Gallery ({project.galleryImages!.length} images)
+        </button>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .featured-card {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    min-height: 260px;
+  }
+  .featured-card:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 50px rgba(99, 102, 241, 0.1);
+  }
+  .featured-img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 768px) {
+    .featured-card {
+      grid-template-columns: 1fr;
+    }
+    .featured-img-wrap {
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>
