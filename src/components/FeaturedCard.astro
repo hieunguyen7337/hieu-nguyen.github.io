@@ -38,19 +38,19 @@ const galleryJson = hasGallery
         </div>
       )
     }
+  </div>
+
+  <!-- Text column -->
+  <div class="featured-body">
     {
       project.badge && (
         <span
-          class={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold border ${badgeClasses[project.badge.color]}`}
+          class={`self-start mb-3 px-3 py-1 rounded-full text-xs font-semibold border ${badgeClasses[project.badge.color]}`}
         >
           {project.badge.label}
         </span>
       )
     }
-  </div>
-
-  <!-- Text column -->
-  <div class="featured-body">
     <div class="flex flex-wrap gap-2 mb-4">
       {
         project.tags.map((tag) => (

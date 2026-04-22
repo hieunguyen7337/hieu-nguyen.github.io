@@ -54,19 +54,19 @@ const galleryJson = hasGallery
         </div>
       )
     }
+  </div>
+
+  <!-- Body -->
+  <div class="p-5 flex flex-col gap-2 flex-1">
     {
       project.badge && (
         <span
-          class={`absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${badgeClasses[project.badge.color]}`}
+          class={`self-start px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${badgeClasses[project.badge.color]}`}
         >
           {project.badge.label}
         </span>
       )
     }
-  </div>
-
-  <!-- Body -->
-  <div class="p-5 flex flex-col gap-2 flex-1">
     <div class="flex flex-wrap gap-1.5">
       {
         project.tags.slice(0, 3).map((tag) => (
