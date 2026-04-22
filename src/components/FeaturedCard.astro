@@ -15,15 +15,22 @@ const badgeClasses: Record<string, string> = {
   gold:   'bg-amber-500/15 text-amber-300 border-amber-500/35',
 };
 
-const hasGallery = (project.galleryImages?.length ?? 0) > 1;
-const galleryJson = hasGallery
-  ? JSON.stringify(project.galleryImages!.map((img) => asset(img)))
-  : '';
+const allImages = project.galleryImages?.length
+  ? project.galleryImages.map((img) => asset(img))
+  : project.primaryImage
+  ? [asset(project.primaryImage)]
+  : [];
+const galleryJson = JSON.stringify(allImages);
 ---
 
 <article class="featured-card group">
   <!-- Image column -->
-  <div class="featured-img-wrap">
+  <div
+    class="featured-img-wrap card-gallery-trigger"
+    data-gallery={galleryJson}
+    style="cursor: pointer;"
+    aria-label={`View images for ${project.title}`}
+  >
     {
       project.primaryImage ? (
         <img
@@ -38,6 +45,12 @@ const galleryJson = hasGallery
         </div>
       )
     }
+    <!-- Expand hint on hover -->
+    <div class="absolute inset-0 bg-black/0 hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
+      <svg class="opacity-0 group-hover:opacity-80 transition-opacity duration-300 drop-shadow-lg" width="36" height="36" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+      </svg>
+    </div>
   </div>
 
   <!-- Text column -->
@@ -66,17 +79,6 @@ const galleryJson = hasGallery
     <p class="text-slate-400 text-[0.95rem] leading-[1.8] flex-1">
       {project.description}
     </p>
-    {
-      hasGallery && (
-        <button
-          class="gallery-trigger mt-5 self-start text-sm text-cyan-400 border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 rounded-full hover:bg-cyan-500/20 transition-all duration-200 cursor-pointer"
-          data-gallery={galleryJson}
-          aria-label={`View ${project.galleryImages!.length} images for ${project.title}`}
-        >
-          View Gallery ({project.galleryImages!.length} images)
-        </button>
-      )
-    }
   </div>
 </article>
 

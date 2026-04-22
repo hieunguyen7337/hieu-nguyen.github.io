@@ -173,11 +173,11 @@ import { experience, education } from '../data/experience';
     if (e.key === 'ArrowRight') { idx = (idx + 1) % gallery.length; showImg(); }
   });
 
-  // Gallery trigger buttons (project cards)
-  document.querySelectorAll<HTMLButtonElement>('.gallery-trigger[data-gallery]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const images: string[] = JSON.parse(btn.dataset.gallery!);
-      openLightbox(images, 0);
+  // Clickable image containers (project cards)
+  document.querySelectorAll<HTMLElement>('.card-gallery-trigger[data-gallery]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const images: string[] = JSON.parse(el.dataset.gallery!);
+      if (images.length) openLightbox(images, 0);
     });
   });
 

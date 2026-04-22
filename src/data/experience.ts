@@ -31,6 +31,10 @@ export const experience: ExperienceEntry[] = [
     roles: [{ title: 'AI Researcher', period: 'January 2026 – Present' }],
     description:
       'Building a production RAG pipeline for legal professionals, focused on hallucination reduction, retrieval quality, and evaluation metrics.',
+    photoStrip: [
+      { src: 'cognilaw/AI%26Society_Cognilaw_presentation.jfif', alt: 'AI & Society Cognilaw presentation' },
+      { src: 'cognilaw/AI%26Society_Cognilaw_presentation_everyone_picture.jfif', alt: 'Cognilaw team group photo' },
+    ],
   },
   {
     id: 'qut-tech',
