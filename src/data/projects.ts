@@ -75,8 +75,9 @@ export const projects: Project[] = [
       'Leading a team of 30+ QUT AIML Society members to build a predictive analytics dashboard on NTI insurance data, detecting fraudulent and anomalous claims and forecasting claim delays. Combines data science, software engineering, and ML model development on a real-world industry dataset.',
     tier: 1,
     badge: { label: 'Team Lead · 30+ Members', color: 'teal' },
-    primaryImage: 'QUT_AIML/QUT_AIML_first_NTI_project_night.jfif',
+    primaryImage: 'QUT_AIML/NTI_dashboard.png',
     galleryImages: [
+      'QUT_AIML/NTI_dashboard.png',
       'QUT_AIML/QUT_AIML_first_NTI_project_night.jfif',
       'QUT_AIML/QUT_AIML_team.jfif',
       'QUT_AIML/QUT_AIML_first_week.jfif',
