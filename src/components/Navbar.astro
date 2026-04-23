@@ -1,5 +1,12 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homePath = `${base}/`;
+const onHomePage =
+  Astro.url.pathname === homePath ||
+  Astro.url.pathname === base ||
+  Astro.url.pathname === `${base}/index.html`;
+
+const sectionHref = (id: string) => (onHomePage ? `#${id}` : `${homePath}#${id}`);
 ---
 
 <nav
@@ -9,7 +16,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <div class="max-w-content mx-auto px-6 h-full flex items-center justify-between">
     <!-- Logo -->
     <a
-      href="#hero"
+      href={sectionHref('hero')}
       class="font-display font-bold text-lg bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
     >
       Hieu Nguyen
@@ -18,22 +25,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <!-- Desktop links -->
     <ul class="hidden md:flex items-center gap-1 list-none m-0 p-0">
       <li>
-        <a href="#about" data-section="about" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+        <a href={sectionHref('about')} data-section="about" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
           About
         </a>
       </li>
       <li>
-        <a href="#projects" data-section="projects" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+        <a href={sectionHref('projects')} data-section="projects" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
           Projects
         </a>
       </li>
       <li>
-        <a href="#experience" data-section="experience" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+        <a href={sectionHref('experience')} data-section="experience" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
           Experience
         </a>
       </li>
       <li>
-        <a href="#education" data-section="education" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+        <a href={sectionHref('education')} data-section="education" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
           Education
         </a>
       </li>
@@ -62,10 +69,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     id="mobile-nav"
     class="md:hidden fixed inset-0 top-[60px] bg-[#08090f]/97 backdrop-blur-xl hidden flex-col items-center justify-center gap-8"
   >
-    <a href="#about"      class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">About</a>
-    <a href="#projects"   class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Projects</a>
-    <a href="#experience" class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Experience</a>
-    <a href="#education"  class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Education</a>
+    <a href={sectionHref('about')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">About</a>
+    <a href={sectionHref('projects')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Projects</a>
+    <a href={sectionHref('experience')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Experience</a>
+    <a href={sectionHref('education')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Education</a>
     <a href={`${base}/blog/`} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Writing</a>
   </div>
 </nav>
