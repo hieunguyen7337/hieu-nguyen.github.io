@@ -269,9 +269,19 @@ The most recent academic work decomposes content structure into three hierarchic
 
 ## Does llms.txt Do Anything?
 
-`llms.txt` is a Markdown file served at `/llms.txt` designed to provide LLMs with a curated map of your site. **What the Server Log Audits Actually Show:** [Search Engine Land implemented llms.txt on their own site in March 2025 and analyzed server logs from mid-August to late October 2025](https://www.semrush.com/blog/llms-txt/). The llms.txt page received zero visits from Google-Extended bot, GPTBot, PerplexityBot, or ClaudeBot, while traditional crawlers like Googlebot and Bingbot only hit it a few times with no special treatment. [A separate 30-day CDN log audit across 1,000 Adobe Experience Manager domains](https://www.longato.ch/llms-recommendation-2025-august/) found no GPTBot, ClaudeBot, PerplexityBot, or similar LLM-specific bot requests to `llms.txt`; Google's desktop crawler accounted for about 95% of hits. [From the citation impact side, an analysis of nearly 300,000 domains](https://seranking.com/blog/llms-txt/) found no correlation between having an llms.txt file and LLM citation frequency.
+**`llms.txt` Overview and Real-World Findings**
 
-The fundamental reason is architectural: **web search tools fetch pages that search engines have already ranked**. They do not visit your root domain first, check for `llms.txt`, and then decide what to retrieve. The tool is reactive to search rankings, not proactive about site discovery.
+`llms.txt` is a Markdown file served at `/llms.txt`, intended to provide large language models (LLMs) with a curated map of a website.
+
+**Here's What Server Log Audits Actually Show:**
+
+- *Search Engine Land* implemented `llms.txt` on their site in March 2025 and analyzed server logs from mid-August to late October 2025. During this period, the `llms.txt` page received **zero visits** from LLM-specific bots such as Google-Extended, GPTBot, PerplexityBot, or ClaudeBot. Traditional crawlers like Googlebot and Bingbot accessed it only a handful of times, with no indication of special treatment.
+
+- A separate 30-day CDN log audit across 1,000 Adobe Experience Manager domains found **no requests** to `llms.txt` from GPTBot, ClaudeBot, PerplexityBot, or similar bots. Google’s desktop crawler accounted for approximately **95% of all hits**.
+
+- From a citation impact perspective, an analysis of nearly 300,000 domains found **no correlation** between the presence of an `llms.txt` file and increased citation frequency by LLMs.
+
+The fundamental reason of why this happens is architectural: **web search tools fetch pages that search engines have already ranked**. They do not visit your root domain first, check for `llms.txt`, and then decide what to retrieve. The tool is reactive to search rankings, not proactive about site discovery.
 
 Where `llms.txt` *does* provide real value: AI coding assistants and developer tools where a human explicitly pastes your documentation URL into context (Claude, Cursor, Windsurf, etc.). In this case, the file is read directly, its clean Markdown structure bypasses the HTML conversion pipeline entirely, and it functions exactly as intended. This is why adoption is concentrated in API documentation sites — Anthropic, Cloudflare, Vercel, ElevenLabs, Supabase — companies whose primary audience is developers using AI coding assistants.
 
