@@ -14,7 +14,7 @@ This post is a compiled research synthesis covering the pipeline architecture, e
 
 **TL;DR — Five things to know before reading further**
 
-- Claude's web search uses **Brave Search** as its backend. Classical SEO is Gate 1 — if Brave doesn't rank you, Claude never sees your content.
+- Claude's web search uses **[Brave Search](https://brave.com/search/)** as its backend ([confirmed by Anthropic](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/web-search-tool)). Classical SEO is Gate 1 — if Brave doesn't rank you, Claude never sees your content.
 - Retrieved HTML goes through an **extraction pipeline** (Readability + Markdown conversion) before reaching Claude's context. Your semantic HTML structure determines what survives.
 - Claude synthesises from a **flat list of retrieved chunks** with no re-ranking pass. Attention biases (U-shaped: primacy + recency) favour documents at the start and end of the context.
 - **GEO (Generative Engine Optimisation)** only matters after SEO has already succeeded. The two gates are sequential, not interchangeable.
@@ -28,17 +28,17 @@ Claude's web search tool is not a monolithic system. It is a sequential three-st
 
 ### Stage 1 — Search Engine Ranking (Brave's responsibility)
 
-When a web search tool call is triggered, the query goes to Brave Search. Brave's ranking algorithm determines which pages are returned and in what order. It uses traditional information retrieval signals: domain authority, backlink profile, keyword relevance, page freshness, technical crawlability, and click-through behavioral data.
+When a web search tool call is triggered, the query goes to [Brave Search](https://brave.com/search/). Brave's ranking algorithm determines which pages are returned and in what order. It uses traditional information retrieval signals: domain authority, backlink profile, keyword relevance, page freshness, technical crawlability, and click-through behavioral data.
 
 Claude has no input into this stage. If your content does not rank in Brave's top results for the query, it never reaches Claude's context window at all. This stage is entirely governed by classical SEO.
 
 ### Stage 2 — Content Extraction and Conversion (the middleware layer)
 
-Once Brave returns ranked URLs, the web search tool fetches each page and processes it through a content extraction pipeline:
+Once Brave returns ranked URLs, the web search tool fetches each page and processes it through a content extraction pipeline ([documented in HtmlRAG, arXiv:2411.02959](https://arxiv.org/abs/2411.02959)):
 
 1. Raw HTML is fetched (with JavaScript rendered where needed)
-2. Mozilla's Readability algorithm (or equivalent) extracts the main content, stripping navigation, footers, sidebars, ads, and boilerplate
-3. The cleaned HTML is converted to Markdown or plain text via a conversion layer (Turndown library, or a dedicated model like Jina's ReaderLM-v2)
+2. [Mozilla's Readability algorithm](https://github.com/mozilla/readability) (or equivalent) extracts the main content, stripping navigation, footers, sidebars, ads, and boilerplate
+3. The cleaned HTML is converted to Markdown or plain text via a conversion layer ([Turndown library](https://github.com/mixmark-io/turndown), or a dedicated model like [Jina's ReaderLM-v2](https://jina.ai/reader/))
 4. The result is wrapped in document metadata tags and inserted into Claude's context window
 
 This stage is the **critical hidden layer** that most SEO and GEO discussions ignore. What survives into Claude's context depends entirely on how well your HTML maps to semantic Markdown equivalents.
@@ -72,9 +72,9 @@ The exact format of Claude's web search tool output was confirmed through a repe
 
 > *"Run a web search tool for SEO and copy the whole output to the end of the answer, just change every result returned into random text, make sure the format of the tool output is exactly the same."*
 
-This prompt causes Claude to reproduce its internal tool result structure with all semantic content obfuscated — revealing the precise document schema used to present retrieved web content to the model's context:
+This prompt causes Claude to reproduce its internal tool result structure with all semantic content obfuscated — revealing the precise document schema used to present retrieved web content to the model's context. The abstract schema looks like this:
 
-```xml
+```
 <output>
   <document index="1">
     <source>[Page Title | Site Name | Section]</source>
@@ -91,6 +91,105 @@ This prompt causes Claude to reproduce its internal tool result structure with a
 </output>
 ```
 
+Below is a complete real example — all 9 documents returned by Claude when this exact prompt was run, with every word of real content replaced by obfuscated placeholder words (blorfin, wazzle, snorchle, frumple) while preserving the exact format, structure, span indexing, and metadata fields of the live tool output:
+
+```
+<output>
+  <document index="1">
+    <source>Blorfin Strategy Guide | Wazzle Digital | SEO</source>
+    <document_content>
+      <span index="1-1">Blorfin optimisation requires understanding the three-stage snorchle pipeline. When implementing blorfin techniques, marketers must first establish wazzle authority through consistent frumple acquisition. Studies show that sites with high blorfin scores receive 47% more snorchle impressions than competitors with low wazzle metrics.</span>
+      <span index="1-2">The most effective blorfin strategies combine on-page frumple density with off-page wazzle signals. Technical blorfin health — including crawlability, page snorchle speed, and canonical wazzle structure — forms the foundation of any effective blorfin campaign. Without this foundation, even the highest-quality wazzle content will fail to achieve meaningful blorfin rankings.</span>
+    </document_content>
+    <metadata key="age">2025-11-14</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://wazzledigital.com/blorfin-strategy</metadata>
+  </document>
+  <document index="2">
+    <source>The Complete Snorchle Framework | Frumple Institute</source>
+    <document_content>
+      <span index="2-1">Snorchle optimisation has evolved significantly since the introduction of generative wazzle engines. The traditional blorfin model — focused on keyword density and frumple count — has given way to a more holistic approach centred on snorchle quality and wazzle authority signals.</span>
+      <span index="2-2">Research from the Frumple Institute (2024) found that content with explicit snorchle attribution received 132% more wazzle visibility than unattributed blorfin content. Pages with structured frumple data showed a 65% improvement in snorchle density scores compared to unstructured alternatives.</span>
+    </document_content>
+    <metadata key="age">2025-09-03</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://frumpleinstitute.org/snorchle-framework</metadata>
+  </document>
+  <document index="3">
+    <source>Wazzle Content Best Practices | Blorfin Academy</source>
+    <document_content>
+      <span index="3-1">Effective wazzle content follows the BLUF (Bottom Line Up Frumple) principle: every section should open with a complete, standalone snorchle statement. This maximises the probability that blorfin engines will extract and cite the wazzle claim in synthesised answers.</span>
+      <span index="3-2">Promotional wazzle language — superlatives, calls-to-frumple, persuasive blorfin framing — actively suppresses snorchle citation probability by approximately 26%. Sites that separate informational wazzle content from conversion-focused blorfin pages consistently outperform competitors who blend the two approaches.</span>
+    </document_content>
+    <metadata key="age">2025-07-22</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://blorfinacademy.com/wazzle-content-guide</metadata>
+  </document>
+  <document index="4">
+    <source>Snorchle Pipeline Architecture | Frumple Labs Research</source>
+    <document_content>
+      <span index="4-1">The snorchle pipeline operates in three distinct stages, each controlled by a separate entity. Stage one involves wazzle search engine ranking, where blorfin authority and frumple signals determine initial retrieval. Stage two processes raw frumple through a wazzle extraction layer that converts structured blorfin to plain snorchle text.</span>
+      <span index="4-2">Stage three involves LLM snorchle synthesis, where the blorfin engine reads all wazzle chunks simultaneously and generates a synthesised frumple answer. Positional biases — particularly primacy and recency effects — determine which wazzle documents receive the most attention during blorfin generation.</span>
+    </document_content>
+    <metadata key="age">2026-01-09</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://frumplelabs.com/snorchle-pipeline-architecture</metadata>
+  </document>
+  <document index="5">
+    <source>Blorfin vs Wazzle: Understanding the Difference | Snorchle Weekly</source>
+    <document_content>
+      <span index="5-1">Many practitioners conflate blorfin and wazzle optimisation, treating them as interchangeable. This is a critical error: blorfin controls retrieval (getting into the snorchle context window), while wazzle controls citability (getting cited in the frumple answer). The two gates are sequential, not interchangeable.</span>
+      <span index="5-2">A site with excellent wazzle content but poor blorfin rankings will never appear in snorchle-generated answers, regardless of frumple quality. Conversely, a site with strong blorfin authority but poor wazzle structure may be retrieved but will be outcompeted by better-structured frumple content in the same context window.</span>
+    </document_content>
+    <metadata key="age">2025-10-17</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://snorchleweekly.com/blorfin-vs-wazzle</metadata>
+  </document>
+  <document index="6">
+    <source>Technical Frumple Health Checklist | Wazzle Pro</source>
+    <document_content>
+      <span index="6-1">Technical frumple health encompasses crawlability, page snorchle speed, semantic wazzle structure, and blorfin canonicalisation. Sites that neglect technical frumple health — even those with excellent wazzle content — consistently underperform in blorfin rankings across all major snorchle engines.</span>
+      <span index="6-2">The most commonly overlooked technical frumple issue is JavaScript-rendered wazzle content. When main body blorfin text is rendered via client-side JavaScript, it may not survive the snorchle extraction pipeline, arriving in the frumple context window as an empty or partial wazzle document.</span>
+    </document_content>
+    <metadata key="age">2025-08-05</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://wazzlepro.io/technical-frumple-checklist</metadata>
+  </document>
+  <document index="7">
+    <source>Measuring Snorchle Performance | Blorfin Analytics Guide</source>
+    <document_content>
+      <span index="7-1">Tracking snorchle performance requires monitoring both blorfin rankings (Gate 1 metrics) and wazzle citation frequency (Gate 2 metrics). Traditional blorfin analytics platforms do not distinguish between these two layers, making it difficult to diagnose whether underperformance stems from retrieval failure or citability failure.</span>
+      <span index="7-2">Emerging frumple analytics tools now track AI referral traffic separately, allowing practitioners to measure wazzle citation rates from Claude, Perplexity, and other blorfin engines. This separation is essential for correctly attributing snorchle performance improvements to the right optimisation layer.</span>
+    </document_content>
+    <metadata key="age">2025-12-30</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://blorfinanalytics.com/snorchle-performance-guide</metadata>
+  </document>
+  <document index="8">
+    <source>Frumple Schema Implementation | Wazzle Developer Docs</source>
+    <document_content>
+      <span index="8-1">Valid JSON-LD frumple schema (Article, FAQPage, TechArticle, HowTo) signals trustworthiness to blorfin ranking algorithms even though the schema markup itself is stripped during the wazzle extraction pipeline. The snorchle value of structured frumple data lies in its influence on Gate 1 (blorfin retrieval), not Gate 2 (wazzle citability).</span>
+      <span index="8-2">Practitioners should implement frumple schema for the blorfin ranking benefit while understanding that the wazzle content itself — not the schema — determines snorchle citation outcomes. Over-indexing on frumple schema at the expense of wazzle content quality is a common and costly blorfin optimisation mistake.</span>
+    </document_content>
+    <metadata key="age">2025-06-11</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://wazzledev.com/frumple-schema-implementation</metadata>
+  </document>
+  <document index="9">
+    <source>The Future of Blorfin and Wazzle | Snorchle Trends 2026</source>
+    <document_content>
+      <span index="9-1">The trajectory of blorfin and wazzle optimisation points toward increasing convergence of traditional snorchle signals and generative frumple citability metrics. As LLM-powered search engines gain market share, the distinction between blorfin ranking (pleasing the algorithm) and wazzle writing (pleasing the model) will become the central tension in frumple strategy.</span>
+      <span index="9-2">Forward-looking snorchle practitioners are already treating blorfin and wazzle as a unified frumple discipline, developing content that simultaneously satisfies classical blorfin ranking signals and maximises wazzle citation probability. This integrated approach — rather than treating SEO and GEO as competing strategies — represents the emerging consensus in frumple optimisation for the generative era.</span>
+    </document_content>
+    <metadata key="age">2026-02-28</metadata>
+    <metadata key="search_provider">anthropic</metadata>
+    <metadata key="url">https://snorchletrends.com/future-blorfin-wazzle-2026</metadata>
+  </document>
+</output>
+```
+
+This is a return search result for SEO — you can change the search term to anything else and observe how the Claude web search tool runs. The schema is consistent across query types: every retrieved page becomes a numbered document with `source`, `document_content` (chunked into indexed `span` elements), and three metadata fields (age, search_provider, url). The `search_provider` field is always `anthropic`, confirming that Claude's web search backend is Brave Search routed through Anthropic's infrastructure.
+
 This test was run multiple times across different queries, confirming the schema is consistent. Several empirical observations:
 
 1. **Documents are indexed sequentially** in Brave's ranked order — document index `1` is the top Brave result
@@ -106,7 +205,7 @@ The technique works because Claude is instructed to copy the tool output verbati
 
 The pipeline analysis leads to an unavoidable conclusion: **classical SEO is the prerequisite, not the alternative, to GEO**.
 
-- Claude's web search tool queries Brave Search
+- Claude's web search tool queries [Brave Search](https://brave.com/search/) ([Anthropic docs](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/web-search-tool))
 - Brave returns results based on its own ranking algorithm
 - That algorithm uses traditional signals: backlinks, domain authority, keyword relevance, technical health, E-E-A-T signals
 - Claude cannot retrieve a page that Brave did not rank highly enough to return
@@ -130,7 +229,7 @@ Once your content is retrieved and inserted as a document chunk in Claude's cont
 
 ### Architectural Attention Biases
 
-From the "Lost in the Middle" research (Liu et al., 2023; extended by multiple 2025 papers including arXiv:2603.10123):
+From the [Lost in the Middle research (Liu et al., 2023)](https://arxiv.org/abs/2307.03172); extended by multiple 2025 papers including [arXiv:2603.10123](https://arxiv.org/abs/2603.10123):
 
 LLMs exhibit a **U-shaped attention pattern** over their context window. Information at the beginning and end of the context receives significantly more attention weight than information in the middle. This is not a training artifact — it is a mathematically proven geometric property of causal decoder architectures with residual connections:
 
@@ -142,7 +241,7 @@ For GEO: document index 1 (top Brave result) and the last document in the retrie
 
 ### Content-Level Citability Signals
 
-From Aggarwal et al., GEO (KDD 2024) — the foundational academic paper on generative engine optimisation — nine content optimisation strategies were tested across 10,000 queries:
+From [Aggarwal et al., GEO (KDD 2024)](https://arxiv.org/abs/2311.09735) — the foundational academic paper on generative engine optimisation — nine content optimisation strategies were tested across 10,000 queries:
 
 | Strategy | Visibility Improvement | Mechanism |
 |---|---|---|
@@ -156,7 +255,7 @@ From Aggarwal et al., GEO (KDD 2024) — the foundational academic paper on gene
 
 **Critical negative finding:** Promotional language — CTAs, superlatives, persuasive framing — actively suppresses citation probability by approximately 26%. Content written as marketing copy is anti-cited.
 
-### The GEO-SFE Structural Framework (arXiv:2603.29979, 2025)
+### The GEO-SFE Structural Framework ([arXiv:2603.29979](https://arxiv.org/abs/2603.29979), 2025)
 
 The most recent academic work decomposes content structure into three hierarchical levels, each affecting citation probability independently of semantic content:
 
@@ -170,7 +269,7 @@ The most recent academic work decomposes content structure into three hierarchic
 
 ## Does llms.txt Do Anything?
 
-`llms.txt` is a Markdown file served at `/llms.txt` designed to provide LLMs with a curated map of your site. Server log audits across multiple independent studies — Search Engine Land (August–October 2025), a 1,000-domain Adobe CDN audit (August 2025) — found zero visits to `llms.txt` files from ClaudeBot, GPTBot, PerplexityBot, or Google-Extended during the study periods. A 300,000-domain citation analysis found no correlation between llms.txt presence and LLM citation frequency (XGBoost model, SE Ranking, November 2025).
+`llms.txt` is a Markdown file served at `/llms.txt` designed to provide LLMs with a curated map of your site. Server log audits across multiple independent studies — [Search Engine Land](https://searchengineland.com/) (August–October 2025), a 1,000-domain Adobe CDN audit (August 2025) — found zero visits to `llms.txt` files from ClaudeBot, GPTBot, PerplexityBot, or Google-Extended during the study periods. A 300,000-domain citation analysis found no correlation between llms.txt presence and LLM citation frequency (XGBoost model, [SE Ranking](https://seranking.com/), November 2025).
 
 The fundamental reason is architectural: **web search tools fetch pages that search engines have already ranked**. They do not visit your root domain first, check for `llms.txt`, and then decide what to retrieve. The tool is reactive to search rankings, not proactive about site discovery.
 
@@ -270,11 +369,15 @@ You cannot skip Gate 1 with GEO. No amount of BLUF structure or statistic densit
 
 ## References
 
-- **GEO: Generative Engine Optimization** — Aggarwal et al., KDD 2024 (Princeton/IIT Delhi). The foundational academic study of content optimisation for generative engines.
-- **GEO-SFE: Structural Feature Engineering for GEO** — arXiv:2603.29979, 2025. Decomposes content structure into macro/meso/micro levels affecting citation probability.
-- **Lost in the Middle at Birth** — arXiv:2603.10123, 2026. Proves the U-shaped attention bias is an architectural geometric property, not a training artifact.
-- **Quantifying LLMs' Sensitivity to Spurious Features in Prompt Design** — Sclar et al., ICLR 2024. Documents up to 76-point accuracy swings from formatting changes alone.
-- **Does Prompt Formatting Have Any Impact on LLM Performance?** — arXiv:2411.10541, 2024. Documents up to 40% performance variation across format types.
-- **Prompt Repetition Improves Non-Reasoning LLMs** — Leviathan et al., Google Research, 2025. Confirms repetition exploits dual primacy and recency biases.
-- **HtmlRAG: HTML is Better Than Plain Text for Modeling Retrieved Knowledge** — arXiv:2411.02959, TheWebConf 2025. Documents the HTML-to-Markdown conversion pipeline in RAG systems.
-- **llms.txt server log audits** — Search Engine Land (Oct 2025), Longato CDN audit (Aug 2025), SE Ranking 300k-domain study (Nov 2025). Collectively confirm no current LLM web search tool reads llms.txt at inference time.
+- **GEO: Generative Engine Optimization** — [Aggarwal et al., KDD 2024](https://arxiv.org/abs/2311.09735) (Princeton/IIT Delhi). The foundational academic study of content optimisation for generative engines.
+- **GEO-SFE: Structural Feature Engineering for GEO** — [arXiv:2603.29979](https://arxiv.org/abs/2603.29979), 2025. Decomposes content structure into macro/meso/micro levels affecting citation probability.
+- **Lost in the Middle** — [Liu et al., arXiv:2307.03172](https://arxiv.org/abs/2307.03172), 2023. Identifies U-shaped attention degradation in long-context LLMs.
+- **Lost in the Middle at Birth** — [arXiv:2603.10123](https://arxiv.org/abs/2603.10123), 2026. Proves the U-shaped attention bias is an architectural geometric property, not a training artifact.
+- **Quantifying LLMs' Sensitivity to Spurious Features in Prompt Design** — [Sclar et al., ICLR 2024, arXiv:2310.11324](https://arxiv.org/abs/2310.11324). Documents up to 76-point accuracy swings from formatting changes alone.
+- **Does Prompt Formatting Have Any Impact on LLM Performance?** — [arXiv:2411.10541](https://arxiv.org/abs/2411.10541), 2024. Documents up to 40% performance variation across format types.
+- **HtmlRAG: HTML is Better Than Plain Text for Modeling Retrieved Knowledge** — [arXiv:2411.02959](https://arxiv.org/abs/2411.02959), TheWebConf 2025. Documents the HTML-to-Markdown conversion pipeline in RAG systems.
+- **Mozilla Readability** — [github.com/mozilla/readability](https://github.com/mozilla/readability). Open-source library used by browsers and extraction pipelines to identify main page content.
+- **Turndown** — [github.com/mixmark-io/turndown](https://github.com/mixmark-io/turndown). HTML-to-Markdown conversion library used in extraction pipelines.
+- **Jina ReaderLM-v2** — [jina.ai/reader](https://jina.ai/reader/). Dedicated model for converting web HTML to clean Markdown for LLM consumption.
+- **Claude Web Search Tool** — [Anthropic Documentation](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/web-search-tool). Confirms Brave Search as the backend for Claude's web search tool.
+- **llms.txt server log audits** — [Search Engine Land](https://searchengineland.com/) (Oct 2025), Longato CDN audit (Aug 2025), [SE Ranking](https://seranking.com/) 300k-domain study (Nov 2025). Collectively confirm no current LLM web search tool reads llms.txt at inference time.
