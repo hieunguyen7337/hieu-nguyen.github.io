@@ -119,10 +119,22 @@ import { experience, education } from '../data/experience';
   const lightbox = document.getElementById('lightbox')!;
   const lbImg = document.getElementById('lb-img') as HTMLImageElement;
   const lbCounter = document.getElementById('lb-counter')!;
+  const lbCaption = document.getElementById('lb-caption')!;
   const lbClose = document.getElementById('lb-close')!;
   const lbPrev = document.getElementById('lb-prev')!;
   const lbNext = document.getElementById('lb-next')!;
   const lbBackdrop = document.getElementById('lb-backdrop')!;
+
+  function srcToCaption(src: string): string {
+    // Extract filename without folder or extension, then humanise
+    const file = src.split('/').pop() ?? src;
+    const name = file.replace(/\.[^.]+$/, '');          // strip extension
+    return name
+      .replace(/[_%]/g, ' ')                             // underscores + encoded chars → space
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, (c) => c.toUpperCase());         // Title Case
+  }
 
   let gallery: string[] = [];
   let idx = 0;
@@ -133,6 +145,7 @@ import { experience, education } from '../data/experience';
       lbImg.src = gallery[idx];
       lbImg.alt = `Image ${idx + 1} of ${gallery.length}`;
       lbImg.style.opacity = '1';
+      lbCaption.textContent = srcToCaption(gallery[idx]);
     }, 120);
     lbCounter.textContent = gallery.length > 1 ? `${idx + 1} / ${gallery.length}` : '';
     lbPrev.style.display = gallery.length > 1 ? 'flex' : 'none';
