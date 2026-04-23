@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <nav
@@ -36,6 +37,11 @@
           Education
         </a>
       </li>
+      <li>
+        <a href={`${base}/blog/`} class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+          Writing
+        </a>
+      </li>
     </ul>
 
     <!-- Hamburger -->
@@ -60,6 +66,7 @@
     <a href="#projects"   class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Projects</a>
     <a href="#experience" class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Experience</a>
     <a href="#education"  class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Education</a>
+    <a href={`${base}/blog/`} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Writing</a>
   </div>
 </nav>
 

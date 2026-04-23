@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const formatted = new Date(post.data.date).toLocaleDateString('en-AU', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Base title={`${post.data.title} | Hieu Nguyen`} description={post.data.description}>
+  <Navbar />
+  <main>
+    <article class="py-20 pb-28">
+      <div class="max-w-[740px] mx-auto px-6">
+
+        <!-- Back link -->
+        <a
+          href={`${base}/blog/`}
+          class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-cyan-400 transition-colors duration-200 mb-10"
+        >
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+          Writing
+        </a>
+
+        <!-- Post header -->
+        <header class="mb-12">
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            {post.data.tags.map((tag: string) => (
+              <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <h1
+            class="font-display font-extrabold leading-[1.12] mb-5 text-slate-100"
+            style="font-size: clamp(1.75rem, 4vw, 2.5rem);"
+          >
+            {post.data.title}
+          </h1>
+
+          <p class="text-slate-400 text-[1.05rem] leading-[1.8] mb-6">
+            {post.data.description}
+          </p>
+
+          <div class="flex items-center gap-3 text-sm text-slate-500 border-t border-white/[0.08] pt-5">
+            <span>{formatted}</span>
+            <span>·</span>
+            <span>{post.data.readingTime}</span>
+          </div>
+        </header>
+
+        <!-- Prose content -->
+        <div class="prose-blog">
+          <Content />
+        </div>
+
+        <!-- Back link (bottom) -->
+        <div class="mt-16 pt-8 border-t border-white/[0.08]">
+          <a
+            href={`${base}/blog/`}
+            class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-cyan-400 transition-colors duration-200"
+          >
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+            Back to Writing
+          </a>
+        </div>
+
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Base>
