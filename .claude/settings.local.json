@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"import\\('./node_modules/astro/package.json', {assert:{type:'json'}}\\).then\\(m=>console.log\\(m.default.version\\)\\)\")",
+      "Bash(curl -s \"http://localhost:4321/hieu-nguyen.github.io/\")",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
+    ]
+  }
+}

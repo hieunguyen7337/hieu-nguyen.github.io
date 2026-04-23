@@ -14,7 +14,7 @@ This post is a compiled research synthesis covering the pipeline architecture, e
 
 **TL;DR — Five things to know before reading further**
 
-- Claude's web search uses **[Brave Search](https://brave.com/search/)** as its backend ([confirmed by Anthropic](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/web-search-tool)). Classical SEO is Gate 1 — if Brave doesn't rank you, Claude never sees your content.
+- Claude's web search uses **[Brave Search](https://brave.com/search/)** as its backend ([confirm by third party](https://www.tryprofound.com/blog/what-is-claude-web-search-explained?utm_source=chatgpt.com)). Classical SEO is Gate 1 — if Brave doesn't rank you, Claude never sees your content.
 - Retrieved HTML goes through an **extraction pipeline** (Readability + Markdown conversion) before reaching Claude's context. Your semantic HTML structure determines what survives.
 - Claude synthesises from a **flat list of retrieved chunks** with no re-ranking pass. Attention biases (U-shaped: primacy + recency) favour documents at the start and end of the context.
 - **GEO (Generative Engine Optimisation)** only matters after SEO has already succeeded. The two gates are sequential, not interchangeable.
@@ -205,7 +205,7 @@ The technique works because Claude is instructed to copy the tool output verbati
 
 The pipeline analysis leads to an unavoidable conclusion: **classical SEO is the prerequisite, not the alternative, to GEO**.
 
-- Claude's web search tool queries [Brave Search](https://brave.com/search/) ([Anthropic docs](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/web-search-tool))
+- Claude's web search tool queries [Brave Search](https://brave.com/search/) ([third party docs](https://www.tryprofound.com/blog/what-is-claude-web-search-explained?utm_source=chatgpt.com))
 - Brave returns results based on its own ranking algorithm
 - That algorithm uses traditional signals: backlinks, domain authority, keyword relevance, technical health, E-E-A-T signals
 - Claude cannot retrieve a page that Brave did not rank highly enough to return
@@ -269,7 +269,7 @@ The most recent academic work decomposes content structure into three hierarchic
 
 ## Does llms.txt Do Anything?
 
-`llms.txt` is a Markdown file served at `/llms.txt` designed to provide LLMs with a curated map of your site. Server log audits across multiple independent studies — [Search Engine Land](https://searchengineland.com/) (August–October 2025), a 1,000-domain Adobe CDN audit (August 2025) — found zero visits to `llms.txt` files from ClaudeBot, GPTBot, PerplexityBot, or Google-Extended during the study periods. A 300,000-domain citation analysis found no correlation between llms.txt presence and LLM citation frequency (XGBoost model, [SE Ranking](https://seranking.com/), November 2025).
+`llms.txt` is a Markdown file served at `/llms.txt` designed to provide LLMs with a curated map of your site. **What the Server Log Audits Actually Show:** [Search Engine Land implemented llms.txt on their own site in March 2025 and analyzed server logs from mid-August to late October 2025](https://www.semrush.com/blog/llms-txt/). The llms.txt page received zero visits from Google-Extended bot, GPTBot, PerplexityBot, or ClaudeBot, while traditional crawlers like Googlebot and Bingbot only hit it a few times with no special treatment. [A separate 30-day CDN log audit across 1,000 Adobe Experience Manager domains](https://www.longato.ch/llms-recommendation-2025-august/) found no GPTBot, ClaudeBot, PerplexityBot, or similar LLM-specific bot requests to `llms.txt`; Google's desktop crawler accounted for about 95% of hits. [From the citation impact side, an analysis of nearly 300,000 domains](https://seranking.com/blog/llms-txt/) found no correlation between having an llms.txt file and LLM citation frequency.
 
 The fundamental reason is architectural: **web search tools fetch pages that search engines have already ranked**. They do not visit your root domain first, check for `llms.txt`, and then decide what to retrieve. The tool is reactive to search rankings, not proactive about site discovery.
 
@@ -379,5 +379,5 @@ You cannot skip Gate 1 with GEO. No amount of BLUF structure or statistic densit
 - **Mozilla Readability** — [github.com/mozilla/readability](https://github.com/mozilla/readability). Open-source library used by browsers and extraction pipelines to identify main page content.
 - **Turndown** — [github.com/mixmark-io/turndown](https://github.com/mixmark-io/turndown). HTML-to-Markdown conversion library used in extraction pipelines.
 - **Jina ReaderLM-v2** — [jina.ai/reader](https://jina.ai/reader/). Dedicated model for converting web HTML to clean Markdown for LLM consumption.
-- **Claude Web Search Tool** — [Anthropic Documentation](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/web-search-tool). Confirms Brave Search as the backend for Claude's web search tool.
-- **llms.txt server log audits** — [Search Engine Land](https://searchengineland.com/) (Oct 2025), Longato CDN audit (Aug 2025), [SE Ranking](https://seranking.com/) 300k-domain study (Nov 2025). Collectively confirm no current LLM web search tool reads llms.txt at inference time.
+- **Claude Web Search Tool** — [Third-party documentation](https://www.tryprofound.com/blog/what-is-claude-web-search-explained?utm_source=chatgpt.com). Documents Brave Search as the backend for Claude's web search tool.
+- **llms.txt server log audits** — [SEMrush summary of Search Engine Land logs](https://www.semrush.com/blog/llms-txt/), [Longato CDN audit](https://www.longato.ch/llms-recommendation-2025-august/), and [SE Ranking 300k-domain citation study](https://seranking.com/blog/llms-txt/). Collectively report no measurable llms.txt effect in current LLM web search behavior.
