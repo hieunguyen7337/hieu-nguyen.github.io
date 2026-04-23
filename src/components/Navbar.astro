@@ -1,12 +1,7 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const homePath = `${base}/`;
-const onHomePage =
-  Astro.url.pathname === homePath ||
-  Astro.url.pathname === base ||
-  Astro.url.pathname === `${base}/index.html`;
-
-const sectionHref = (id: string) => (onHomePage ? `#${id}` : `${homePath}#${id}`);
+const sectionHref = (id: string) => `${homePath}#${id}`;
 ---
 
 <nav
