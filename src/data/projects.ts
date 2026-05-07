@@ -23,6 +23,23 @@ export interface Project {
 export const projects: Project[] = [
   // ── TIER 1: Featured Research & Active Work ──────────────────────────────
   {
+    id: 'local-ai-workflow-platform',
+    title: 'Local AI Workflow Platform',
+    description:
+      'Local-first platform for authoring, running, visualizing, and iterating on AI workflows from declarative YAML specs. Workflows validate through a Pydantic GraphSpec contract, render as graph-first review surfaces, compile into LangGraph, and produce structured run artifacts with approval interrupts, forked continuations, reusable subgraphs, eval coverage, rollback restore, batch execution, and proposal optimization. Also used to run the Agentic AI for Person Re-Identification project workflow.',
+    tier: 1,
+    badge: { label: 'Active · Workflow Platform', color: 'cyan' },
+    primaryImage: 'AI_Agent_Local_Workflow_PLatform/PLatform_Workflow_sample.png',
+    galleryImages: ['AI_Agent_Local_Workflow_PLatform/PLatform_Workflow_sample.png'],
+    tags: ['LangGraph', 'YAML Workflows', 'Pydantic', 'FastAPI', 'React Flow'],
+    links: [
+      {
+        label: 'GitHub',
+        url: 'https://github.com/hieunguyen7337/AI_Agent_Local_Workflow_PLatform',
+      },
+    ],
+  },
+  {
     id: 'cognilaw',
     title: 'Cognilaw',
     description:
