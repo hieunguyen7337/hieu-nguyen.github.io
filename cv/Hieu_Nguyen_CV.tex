@@ -1,0 +1,253 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[top=0.70in, bottom=0.70in, left=0.75in, right=0.75in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[colorlinks=true, urlcolor=accent, linkcolor=accent, citecolor=accent]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+
+\definecolor{accent}{RGB}{37, 99, 235}
+\definecolor{muted}{RGB}{100, 116, 139}
+
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}{0em}{}
+  [\color{accent}\titlerule]
+\titlespacing{\section}{0pt}{14pt}{6pt}
+
+\newcommand{\role}[4]{%
+  \noindent\textbf{#1}\hfill\textcolor{muted}{#2}\\
+  \textit{#3}\hfill\textcolor{muted}{#4}\vspace{3pt}%
+}
+
+\newcommand{\project}[3]{%
+  \noindent\textbf{#1}%
+  \ifx&#2&\else\hfill\textcolor{muted}{\small #2}\fi\\[-2pt]
+  \textcolor{muted}{\small\textit{Stack: #3}}\vspace{3pt}%
+}
+
+\setlist[itemize]{leftmargin=1.4em, noitemsep, topsep=2pt}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\emergencystretch=3em
+
+% ── Variant switch ───────────────────────────────────────────────────────────
+% Set to one of: ai | data | fullstack
+% Build three times, changing only this line, and save each PDF as:
+%   ai        -> public/Hieu_Nguyen_CV.pdf            (default download)
+%   data      -> public/Hieu_Nguyen_CV_Data.pdf
+%   fullstack -> public/Hieu_Nguyen_CV_FullStack.pdf
+\def\variant{ai}
+
+\newcommand{\AI}[1]{\ifx\variant\VAI#1\fi}
+\newcommand{\DATA}[1]{\ifx\variant\VDATA#1\fi}
+\newcommand{\FULL}[1]{\ifx\variant\VFULL#1\fi}
+\def\VAI{ai}
+\def\VDATA{data}
+\def\VFULL{fullstack}
+\newcommand{\NOTFULL}[1]{\ifx\variant\VFULL\else#1\fi}
+
+% ── Medium switch ────────────────────────────────────────────────────────────
+% Set to one of: screen | print. Orthogonal to the variant; build.sh rewrites both.
+% print: black headings and rules, dark-grey secondary text that survives a photocopy, black
+% link text, and the header's link labels spelled out as addresses -- on paper "LinkedIn" is a
+% word with nothing behind it.
+\def\medium{screen}
+
+\def\MPRINT{print}
+\newcommand{\SCREEN}[1]{\ifx\medium\MPRINT\else#1\fi}
+\newcommand{\PRINT}[1]{\ifx\medium\MPRINT#1\fi}
+
+\PRINT{%
+  \definecolor{accent}{gray}{0}%
+  \definecolor{muted}{gray}{0.3}%
+  \hypersetup{hidelinks}%
+}
+
+% Volunteering entry: title, dates, organisation, detail
+\newcommand{\volunteer}[4]{%
+  \noindent\textbf{#1}\hfill\textcolor{muted}{#2}\\
+  \textit{#3}\\[1pt]
+  \small #4\vspace{6pt}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Hieu Nguyen}\\[5pt]
+  \href{mailto:hieu7337@gmail.com}{hieu7337@gmail.com}
+  \enspace|\enspace
+  \SCREEN{%
+  \href{https://hieunguyen7337.github.io/hieu-nguyen.github.io/}{Portfolio}
+  \enspace|\enspace
+  \href{https://www.linkedin.com/in/hieu-nguyen-3347a125b}{LinkedIn}
+  \enspace|\enspace
+  \href{https://github.com/hieunguyen7337}{GitHub}%
+  }%
+  \PRINT{%
+  \href{https://hieunguyen7337.github.io/hieu-nguyen.github.io/}{hieunguyen7337.github.io/hieu-nguyen.github.io}\par\vspace{2pt}
+  \href{https://www.linkedin.com/in/hieu-nguyen-3347a125b}{linkedin.com/in/hieu-nguyen-3347a125b}
+  \enspace|\enspace
+  \href{https://github.com/hieunguyen7337}{github.com/hieunguyen7337}%
+  }
+\end{center}
+
+\section{Summary}
+
+\AI{
+AI engineer with experience building and deploying machine learning systems across retrieval, NLP, speech recognition and computer vision. Currently CTO at Plenarius, a research platform for academic papers, organisations, publishing, discussion and messaging, with AI-assisted search across its corpus. Previously worked on production AI systems at Viettel Post and FPT Software. Completing a Master of Artificial Intelligence at QUT in November 2026.
+}
+
+\DATA{
+Engineer building and operating production data infrastructure at scale on one database. As CTO at Plenarius, operates a PostgreSQL platform over roughly 200,000 papers, where storage layout, indexing and query plans replace adding infrastructure. Reduced an author profile from 7.07 s to sub-second via a partial index with an INCLUDE covering column. Prior data and pipeline work at Viettel Post and FPT Software. Completing a Master of Artificial Intelligence at QUT, finishing November 2026.
+}
+
+\FULL{
+Engineer shipping and operating whole systems front to back, keeping them deliberately small. At Plenarius, a Go runtime serves 96 server-rendered pages and 205 public \texttt{/api/} paths from one binary. The architecture prioritises restraint: seven direct dependencies, no ORM, and React as non-hydrating islands rather than a single-page application. Prior production engineering at FPT Software and Viettel Post. Completing a Master of Artificial Intelligence at QUT, finishing November 2026.
+}
+
+\section{Skills}
+
+\AI{
+\begin{itemize}
+\item \textbf{AI/ML:} RAG, vector search and quantisation, agentic workflows, LLM orchestration, transformers, NLP, speech recognition, computer vision, anomaly detection.
+\item \textbf{Engineering:} Python, Go, PostgreSQL, pgvector, MongoDB, REST APIs, React, Docker, CI/CD, data pipelines.
+\item \textbf{Cloud \& infrastructure:} Azure (Functions, Cosmos DB), AWS (EC2, S3), Hetzner, Cloudflare (WAF, R2 object storage), Caddy, systemd.
+\end{itemize}
+}
+
+\DATA{
+\begin{itemize}
+\item \textbf{Data platforms:} PostgreSQL, pgvector, halfvec and binary quantisation, HNSW indexing, query plan tuning, schema migrations, MongoDB, job queues.
+\item \textbf{Pipelines and modelling:} Python, Go, SQL, batch and streaming ingestion, large-scale text processing, data quality checks, embedding models, predictive modelling, anomaly detection, RAG.
+\item \textbf{Cloud \& infrastructure:} Azure (Functions, Cosmos DB), AWS (EC2, S3), Hetzner, Cloudflare (WAF, R2 object storage), Caddy, systemd.
+\end{itemize}
+}
+
+\FULL{
+\begin{itemize}
+\item \textbf{Backend and frontend:} Go, Python, SQL, PostgreSQL, MongoDB, REST API design, server-rendered templates, job queues, background workers, FastAPI, React islands, esbuild, no-framework JavaScript.
+\item \textbf{Delivery:} Docker, CI/CD, generated configuration with reproducibility checks, migrations, deployment and operation of live services.
+\item \textbf{Cloud \& infrastructure:} Azure (Functions, Cosmos DB), AWS (EC2, S3), Hetzner, Cloudflare (WAF, R2 object storage), Caddy, systemd.
+\end{itemize}
+}
+
+\section{Experience}
+
+\role{Chief Technology Officer}{Apr 2026 -- Present}
+{\href{https://plenarius.org}{Plenarius (formerly Calimac)}\PRINT{\enspace|\enspace plenarius.org}}{}
+\AI{
+\begin{itemize}
+\item Inherited a PHP-based platform and led its migration to Go and PostgreSQL, moving 96 server-rendered pages, 205 API paths and the recommendation system onto the new production stack with no PHP in the request path.
+\item Designed the vector search architecture over roughly 200,000 papers and integrated paid AI features into the platform, including dimensionality reduction, quantised vector storage, exact re-scoring and evaluation across retrieval configurations.
+\item Run the production platform on a single 8-vCPU server for roughly US\$43 per month all in, tracking retrieval quality, cost per query and infrastructure trade-offs.
+\end{itemize}
+}
+
+\DATA{
+\begin{itemize}
+\item Owned the core PostgreSQL database tier, actively tuning query execution behaviour and managing schema migrations directly without relying on framework defaults.
+\item Analysed query execution plans and redesigned access paths, uncovering and fixing a pagination correctness bug caused by duplicate ordering timestamps while systematically accelerating high-traffic database endpoints.
+\item Designed a multi-stage vector search architecture combining dimensional reduction, quantised storage, and an exact re-scoring stage to minimise index footprint while preserving retrieval quality across the corpus.
+\end{itemize}
+}
+
+\FULL{
+\begin{itemize}
+\item Consolidated production onto a single Go binary serving 96 server-rendered pages and 205 public API paths without a web framework, leaving zero PHP in the production request path.
+\item Delivered the interface as server-rendered pages with isolated client-side islands instead of a single-page application, supported by an asset build requiring no separate JavaScript toolchain.
+\item Operated the entire platform on a single commodity server for roughly US\$43 a month, maintaining reliability through a comprehensive automated test estate and strict continuous integration checks.
+\end{itemize}
+}
+
+\vspace{8pt}
+
+\NOTFULL{
+\role{AI Researcher}{Jan 2026 -- Jun 2026}
+{\href{https://cognilawai.com/}{Cognilaw}}{}
+\begin{itemize}
+\item Evaluated and improved a hallucination-resistant RAG pipeline for legal workflows, testing retrieval strategies, grounded generation and answer validation using retrieval and response-quality metrics.
+\end{itemize}
+
+\vspace{8pt}
+}
+
+\role{Research Assistant}{Sep 2025 -- Present}
+{Queensland University of Technology}{}
+\begin{itemize}
+\item Evaluated and engineered an agentic person re-identification system combining appearance, body composition, gait and physical attributes through confidence-weighted voting.
+\item Cleaned and prepared biomedical literature datasets, then fine-tuned transformer models for protein-protein interaction relation extraction.
+\end{itemize}
+
+\vspace{8pt}
+
+\role{AI Software Engineer}{Apr 2023 -- Nov 2024}
+{Viettel Post}{}
+\begin{itemize}
+\item Integrated Whisper fine-tuned on Vietnamese with BERT classifiers for offensive-language detection and mood prediction, achieving 90\% accuracy in production.
+\item Trained an Extra Trees classifier for customer churn prediction, reaching 80\% accuracy.
+\end{itemize}
+
+\vspace{8pt}
+
+\role{AI Software Engineer}{Oct 2021 -- Mar 2023}
+{FPT Software}{}
+\begin{itemize}
+\item Contributed to FPT's \href{https://fptsoftware.com/newsroom/news-and-press-releases/news/fpt-achieves-us-patent-for-advanced-acoustic-anomaly-detection-technology}{US-patented} Sound AI acoustic anomaly-detection platform, deployed on a Samsung factory floor. Built its Python backend on Azure Functions, supporting model serving, CI/CD and production monitoring.
+\end{itemize}
+
+\vspace{8pt}
+
+\role{Research Intern, Computer Vision}{Apr 2021 -- Jul 2021}
+{Asilla}{}
+\begin{itemize}
+\item Fine-tuned and deployed real-time \href{https://github.com/hieunguyen7337/trt_pose_edited}{human pose estimation} on Jetson Nano with TensorRT, using INT8 quantisation and structured pruning to improve efficiency by 20\% under edge-compute constraints.
+\end{itemize}
+
+\section{Projects \& Awards}
+
+\project{\href{https://github.com/hieunguyen7337/AI_Agent_Local_Workflow_PLatform}{Local AI Workflow Platform}}{Presented \enspace|\enspace AgentCamp 2026, Brisbane Edition}
+{Python, LangGraph, FastAPI, React Flow, Pydantic, YAML}\\
+Local-first platform for authoring, running and visualising AI workflows from declarative YAML. Each workflow is validated through a Pydantic GraphSpec contract before being compiled into runnable graphs, with approval interrupts, rollback restore and eval coverage.
+
+\vspace{6pt}
+
+\project{Capture the Narrative}{1st Place \enspace|\enspace UNSW National AI Competition}
+{LLMs, multi-agent simulation, AWS EC2, S3}\\
+Built generative-AI agents inside a simulated election environment as an adversarial exercise in how synthetic content shifts sentiment.
+
+\vspace{6pt}
+
+\project{SafeMind}{Most Viable \enspace|\enspace TANDA GenAI Hackathon}
+{Python, Flask, OpenAI API, MongoDB, python-docx}\\
+Voice-driven workplace incident capture that pre-fills WorkCover claim forms, compressing hours of paperwork for injured workers.
+
+\section{Education}
+
+\role{Master of Artificial Intelligence}{2025 -- 2026}
+{Queensland University of Technology \enspace|\enspace GPA 6.54/7.0}
+{}
+
+\vspace{8pt}
+
+\role{Bachelor of Information Technology}{2018 -- 2021}
+{University of Science and Technology of Hanoi}
+{}
+
+\section{Volunteer}
+
+\volunteer{Vice President}{Oct 2025 -- Present}
+{QUT The Emerging Coders Hub (TECH)}
+{Ran coding and IT workshops teaching beginners to build chatbots, personal websites and AI agents, and organised career events including mock interview sessions, progressing from General Executive (Jun--Oct 2025).}
+
+\volunteer{Project Manager}{Sep 2025 -- Present}
+{QUT AI \& ML Society}
+{Led 30+ members building a predictive analytics dashboard on real insurance data for claim-delay prediction and anomaly detection, stepping up from Project Officer (Aug--Sep 2025).}
+
+\end{document}

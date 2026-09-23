@@ -16,3 +16,16 @@ cv/*.toc
 
 cv/prompts/out/
 cv/build/
+
+# Private: this repo is public. The facts ledger, the prompts that quote it, the private check
+# list and one-off edit scripts hold detail kept off every public surface.
+cv/facts.md
+cv/prompts/
+cv/private-checks.json
+cv/patch_*.py
+cv/fix_drafts.py
+cv/apply_bullets.py
+cv/reflow_facts.py
+cv/crop_shots.py
+cv/previous/
+linkedin-profile-export.md

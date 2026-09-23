@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "sitecheck": "node scripts/sitecheck.mjs",
+    "verify": "astro build && node scripts/sitecheck.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
