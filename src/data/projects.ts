@@ -21,12 +21,28 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'plenarius',
+    title: 'Plenarius',
+    description:
+      'Inherited a PHP platform and led the migration to Go and PostgreSQL for Plenarius, an open platform for academic research with vector search over roughly 200,000 papers. Production serves 96 server-rendered pages and 205 public API paths from one binary, with zero PHP in the request path. The retrieval architecture pairs a 1-bit binary quantisation prefilter with an exact re-scoring pass. The platform runs on one 8-vCPU server for roughly US$43 a month all in.',
+    tier: 1,
+    badge: { label: 'Active · CTO', color: 'cyan' },
+    primaryImage: 'plenarius/plenarius_search.png',
+    galleryImages: [
+      'plenarius/plenarius_search.png',
+      'plenarius/plenarius_home.png',
+      'plenarius/plenarius_library.png',
+    ],
+    tags: ['Go', 'PostgreSQL', 'pgvector', 'Vector Search', 'Quantisation'],
+    links: [{ label: 'Website', url: 'https://plenarius.org' }],
+  },
   // ── TIER 1: Featured Research & Active Work ──────────────────────────────
   {
     id: 'local-ai-workflow-platform',
     title: 'Local AI Workflow Platform',
     description:
-      'Local-first platform for authoring, running, visualizing, and iterating on AI workflows from declarative YAML specs. Workflows validate through a Pydantic GraphSpec contract, render as graph-first review surfaces, compile into LangGraph, and produce structured run artifacts with approval interrupts, forked continuations, reusable subgraphs, eval coverage, rollback restore, batch execution, and proposal optimization. Also used to run the Agentic AI for Person Re-Identification project workflow.',
+      'Local-first platform for authoring, running and visualising AI workflows from declarative YAML specs. Workflows validate through a Pydantic GraphSpec contract before they run. Compiled into LangGraph, the system supports approval interrupts during execution and carries eval coverage across workflows.',
     tier: 1,
     badge: { label: 'Active · Workflow Platform', color: 'cyan' },
     primaryImage: 'AI_Agent_Local_Workflow_PLatform/PLatform_Workflow_sample.png',
@@ -43,9 +59,9 @@ export const projects: Project[] = [
     id: 'cognilaw',
     title: 'Cognilaw',
     description:
-      'Building and evaluating a Retrieval-Augmented Generation pipeline specifically designed for the legal profession. The core challenge is hallucination reduction: legal AI that cites non-existent cases is worse than no AI at all. Working on custom retrieval strategies, evaluation metrics, and an iterative optimisation loop.',
+      'Built and evaluated a Retrieval-Augmented Generation pipeline designed for the legal profession. The core challenge was hallucination reduction: legal AI that cites non-existent cases is worse than no AI at all. Work focused on retrieval strategy design, grounded generation, answer validation, evaluation metrics, and iterative optimisation loops.',
     tier: 1,
-    badge: { label: 'Active · AI Researcher', color: 'cyan' },
+    badge: { label: 'AI Researcher · 2026', color: 'indigo' },
     primaryImage: 'cognilaw/cognilaw_basic_architecture.jfif',
     galleryImages: [
       'cognilaw/cognilaw_basic_architecture.jfif',
@@ -61,7 +77,7 @@ export const projects: Project[] = [
     id: 'reid',
     title: 'Agentic AI for Person Re-Identification',
     description:
-      'Multi-agent architecture where specialised agents reason over complementary cues (appearance, body composition, gait, and physical attributes) to identify individuals across camera feeds. Confidence-weighted voting makes the system robust to occlusion and appearance changes.',
+      'Multi-agent architecture developed at QUT for person re-identification across camera feeds. Specialised agents reason over complementary visual cues: appearance, body composition, gait, and physical attributes. To produce the final prediction, a confidence-weighted voting mechanism aggregates the individual agent outputs into a unified identification decision.',
     tier: 1,
     badge: { label: 'QUT Research', color: 'indigo' },
     primaryImage: 'AgenticAI_for_Video_Re-Identification/Agentic_solution.jpg',
@@ -70,20 +86,6 @@ export const projects: Project[] = [
       'AgenticAI_for_Video_Re-Identification/Re-ID_problem.png',
     ],
     tags: ['Computer Vision', 'Multi-Agent', 'Re-Identification', 'LLM'],
-  },
-  {
-    id: 'protein',
-    title: 'Relation Extraction for Protein-Protein Interaction',
-    description:
-      'Fine-tuning transformer models to extract protein names and their interaction relationships from biomedical literature. The pipeline processes raw academic text and outputs structured knowledge graphs that can power drug discovery databases.',
-    tier: 1,
-    badge: { label: 'QUT Research', color: 'indigo' },
-    primaryImage:
-      'Relation_Extraction_for_Protein-Protein_Interaction/general_model_architecture.jpg',
-    galleryImages: [
-      'Relation_Extraction_for_Protein-Protein_Interaction/general_model_architecture.jpg',
-    ],
-    tags: ['NLP', 'Bioinformatics', 'Transformers', 'Information Extraction'],
   },
   {
     id: 'nti',
@@ -108,6 +110,20 @@ export const projects: Project[] = [
 
   // ── TIER 2: Industry, Research & Hackathons ──────────────────────────────
   {
+    id: 'protein',
+    title: 'Relation Extraction for Protein-Protein Interaction',
+    description:
+      'Ongoing QUT research on relation extraction for protein-protein interaction. The project fine-tunes transformer models over biomedical literature to extract protein names and their interaction relationships. The resulting pipeline processes raw academic text and turns it into structured output.',
+    tier: 2,
+    badge: { label: 'QUT Research', color: 'indigo' },
+    primaryImage:
+      'Relation_Extraction_for_Protein-Protein_Interaction/general_model_architecture.jpg',
+    galleryImages: [
+      'Relation_Extraction_for_Protein-Protein_Interaction/general_model_architecture.jpg',
+    ],
+    tags: ['NLP', 'Bioinformatics', 'Transformers', 'Information Extraction'],
+  },
+  {
     id: 'audio',
     title: 'Audio Call Analysis',
     description:
@@ -121,7 +137,7 @@ export const projects: Project[] = [
     id: 'churn',
     title: 'Customer Churn Detection',
     description:
-      'Predicted which customers would churn with 80% accuracy using Extra Tree Regression on Viettel Post logistics data. Identified early warning signals that enabled proactive retention campaigns.',
+      'Customer churn detection for Viettel Post logistics operations. Built an Extra Trees classification model to predict which customers would churn, achieving 80% accuracy.',
     tier: 2,
     primaryImage: 'customer_churn/customer_churn_visual.png',
     galleryImages: ['customer_churn/customer_churn_visual.png'],
@@ -131,18 +147,18 @@ export const projects: Project[] = [
     id: 'soundai',
     title: 'Sound AI MLOps Platform',
     description:
-      'End-to-end MLOps platform based on Landing AI, deployed in production on a Samsung factory floor for acoustic anomaly detection. Managed backend infrastructure, CI/CD pipelines, model serving, and monitoring at FPT Software.',
+      'Production acoustic anomaly detection platform deployed on a Samsung factory floor at FPT Software, contributing to a US patent awarded to FPT. The backend was written in Python on Azure Functions with MongoDB on Azure Cosmos DB, supporting model serving, CI/CD pipelines, backend integration, and monitoring.',
     tier: 2,
     primaryImage: 'SoundAI/Sound_AI_platform.png',
     galleryImages: ['SoundAI/Sound_AI_platform.png', 'SoundAI/Sound_AI_workflow.png'],
-    tags: ['MLOps', 'FastAPI', 'Docker', 'Production', 'Samsung'],
+    tags: ['MLOps', 'Azure Functions', 'Docker', 'Production', 'Samsung'],
     links: [{ label: 'FPT Patent', url: 'https://fptsoftware.com/newsroom/news-and-press-releases/news/fpt-achieves-us-patent-for-advanced-acoustic-anomaly-detection-technology' }],
   },
   {
     id: 'pose',
     title: 'Human Pose Estimation on Edge',
     description:
-      'Optimised a pose estimation model for Jetson Nano edge devices at Asilla, achieving a 20% precision improvement while maintaining real-time inference speed through model compression and quantisation.',
+      'Optimised a human pose estimation model for Jetson Nano edge devices during a computer vision internship at Asilla. Applying INT8 quantisation and structured pruning with TensorRT delivered a 20% efficiency improvement at real-time throughput under edge-compute constraints.',
     tier: 2,
     primaryImage: 'Human_Pose_Estimation_on_Edge/Human_pose_model_pipeline.PNG',
     galleryImages: ['Human_Pose_Estimation_on_Edge/Human_pose_model_pipeline.PNG'],
@@ -153,7 +169,7 @@ export const projects: Project[] = [
     id: 'jarvis',
     title: 'Jarvis',
     description:
-      'Conversational AI agent built at QUT\'s AI Hackathon in 48 hours. Students talk to Jarvis to manage deadlines, exams, and work shifts. It also connects students with shared food preferences for on-campus dining.',
+      "Conversational agent built at QUT's AI Hackathon during a 48-hour build. Students talk to Jarvis to manage deadlines, exams, and work shifts.",
     tier: 2,
     badge: { label: 'QUT AI Hackathon', color: 'indigo' },
     primaryImage: 'QUT_AIML_hackathon_Jarvis/Jarvis_opening_page.jfif',
@@ -169,7 +185,7 @@ export const projects: Project[] = [
     id: 'safemind',
     title: 'SafeMind',
     description:
-      'Most Viable award at TANDA GenAI Hackathon. Voice-powered OHS incident reporting for injured workers. SafeMind captures evidence via voice and automatically pre-fills WorkCover claim forms, reducing hours of paperwork to minutes.',
+      'Awarded Most Viable at the TANDA GenAI Hackathon. SafeMind provides voice-driven workplace incident capture for injured workers. The system captures evidence via voice and automatically pre-fills the Queensland WorkCover FM106 claim form template, compressing hours of paperwork.',
     tier: 2,
     badge: { label: 'Most Viable · TANDA', color: 'gold' },
     primaryImage: 'Tanda_hackathon_Safemind/Safe_mind_prize.jfif',
@@ -184,7 +200,7 @@ export const projects: Project[] = [
     id: 'capture',
     title: 'Capture the Narrative',
     description:
-      '1st Place at UNSW National AI Competition. Developed GenAI bots that strategically influence voter sentiment through targeted content. In simulation, shifted a projected 49.5% loss to a 51.2% victory, demonstrating both the power and risk of AI in political communication.',
+      '1st Place, UNSW National AI Competition. Built generative-AI agents inside a simulated election environment as an adversarial exercise in how synthetic content shifts sentiment. Framed as a red-team demonstration of misuse risks rather than a persuasion capability, the simulation moved a projected 49.5% loss to a 51.2% result.',
     tier: 2,
     badge: { label: '1st Place · UNSW National', color: 'gold' },
     primaryImage: 'Capture_the_narrative/capture_the_narrative_prize.jfif',

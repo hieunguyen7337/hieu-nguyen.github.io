@@ -16,7 +16,7 @@ export interface ExperienceLink {
 export interface ExperienceEntry {
   id: string;
   company: string;
-  location: string;
+  location?: string;
   roles: Role[];
   description: string;
   photoStrip?: PhotoItem[];
@@ -32,12 +32,20 @@ export interface EducationEntry {
 
 export const experience: ExperienceEntry[] = [
   {
+    id: 'plenarius',
+    company: 'Plenarius (formerly Calimac)',
+    roles: [{ title: 'Chief Technology Officer', period: 'April 2026 – Present' }],
+    description:
+      'Leads engineering for the live research platform, which moved from an inherited PHP codebase to a Go and PostgreSQL stack now serving all of production, with zero PHP in the request path.',
+    links: [{ label: 'Website', url: 'https://plenarius.org' }],
+  },
+  {
     id: 'cognilaw',
     company: 'Cognilaw',
     location: 'Brisbane, Queensland, Australia',
-    roles: [{ title: 'AI Researcher', period: 'January 2026 – Present' }],
+    roles: [{ title: 'AI Researcher', period: 'January 2026 – June 2026' }],
     description:
-      'Building a production RAG pipeline for legal professionals, focused on hallucination reduction, retrieval quality, and evaluation metrics.',
+      'Built a hallucination-resistant retrieval-augmented generation pipeline for legal work, covering retrieval strategy design, grounded generation, answer validation, evaluation metrics and iterative optimisation loops.',
     photoStrip: [
       { src: 'cognilaw/AI%26Society_Cognilaw_presentation.jfif', alt: 'AI & Society Cognilaw presentation' },
       { src: 'cognilaw/AI%26Society_Cognilaw_presentation_everyone_picture.jfif', alt: 'Cognilaw team group photo' },
@@ -95,7 +103,7 @@ export const experience: ExperienceEntry[] = [
     location: 'Hanoi, Vietnam',
     roles: [{ title: 'AI Software Engineer', period: 'October 2021 – March 2023' }],
     description:
-      'Developed and deployed the backend of the Sound AI MLOps platform (in production at Samsung) plus text summarisation and code generation applications.',
+      'Built the Python backend on Azure Functions for the Sound AI acoustic anomaly detection platform in production at Samsung, alongside text summarisation and code generation applications.',
   },
   {
     id: 'asilla',
@@ -103,7 +111,7 @@ export const experience: ExperienceEntry[] = [
     location: 'Hanoi, Vietnam',
     roles: [{ title: 'Research Intern', period: 'April 2021 – July 2021' }],
     description:
-      'Improved human pose detection precision by 20% through model compression and advanced computer vision techniques on Jetson Nano edge devices.',
+      'Deployed human pose estimation to Jetson Nano edge devices using TensorRT, achieving a 20% efficiency improvement at real-time throughput through INT8 quantisation and structured pruning.',
   },
 ];
 
@@ -112,7 +120,7 @@ export const education: EducationEntry[] = [
     institution: 'Queensland University of Technology',
     degree: "Master's degree, Artificial Intelligence",
     period: 'February 2025 – November 2026',
-    grade: 'GPA 6.5 / 7.0',
+    grade: 'GPA 6.54 / 7.0',
   },
   {
     institution: 'University of Science and Technology of Ha Noi',

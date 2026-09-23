@@ -37,7 +37,11 @@ const photoGalleryJson = hasPhotos
           ))
         }
       </div>
-      <span class="text-slate-500 text-sm self-start mt-0.5">{entry.location}</span>
+      {
+        entry.location && (
+          <span class="text-slate-500 text-sm self-start mt-0.5">{entry.location}</span>
+        )
+      }
     </div>
 
     <p class="text-slate-400 text-sm leading-[1.8]">{entry.description}</p>

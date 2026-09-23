@@ -1,4 +1,5 @@
 ---
+import { asset } from '../utils/asset';
 ---
 
 <footer class="border-t border-white/[0.06] py-8 mt-8">
@@ -13,6 +14,14 @@
     <div class="flex gap-5">
       <a href="mailto:hieu7337@gmail.com" class="hover:text-slate-300 transition-colors">
         Email
+      </a>
+      <a
+        href={asset('Hieu_Nguyen_CV.pdf')}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-slate-300 transition-colors"
+      >
+        CV
       </a>
       <a
         href="https://www.linkedin.com/in/hieu-nguyen-3347a125b"

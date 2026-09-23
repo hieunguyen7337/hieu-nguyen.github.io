@@ -4,3 +4,15 @@ dist/
 .env
 .env.*
 !.env.example
+
+# LaTeX build artefacts
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/*.synctex.gz
+cv/*.fls
+cv/*.fdb_latexmk
+cv/*.toc
+
+cv/prompts/out/
+cv/build/
