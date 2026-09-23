@@ -95,7 +95,10 @@ MARKERS = [
     ("no invented churn lift", "lift over random", set()),
     # The ledger puts full-time industry at 3 years 2 months and says to use dates, not a
     # headline number. A tenure claim is the easiest thing to inflate by accident.
-    ("no headline tenure claim", "years of experience", set()),
+    # Overridden for the AI Summary only, by owner instruction 2026-09-23 (F10): "4 years of
+    # experience" is the owner's own wording, asserted present there and absent elsewhere. (A
+    # "4+" ban cannot be expressed here: norm() strips the "+", so it would match this text.)
+    ("owner-directed tenure (AI summary)", "4 years of experience", {"ai"}),
     ("Jarvis removed", "Jarvis", set()),
     ("Practice skill line gone", "Practice:", set()),
     ("quantisation != precision", "precision improvement", set()),

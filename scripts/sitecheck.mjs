@@ -62,6 +62,10 @@ const FORBIDDEN = [
   ['food preferences', 'F7.11 - feature appears nowhere in the ledger'],
   ['paperwork to minutes', 'F7.10 - "to minutes" is an added figure'],
   ['occlusion', 'F7.4 - performance claim that was never measured'],
+
+  // Tenure matches the CV's AI Summary, owner-directed 2026-09-23 (F10). The old figure
+  // described the Vietnam work alone; the new one is the whole career.
+  ['3+ years', 'F10 - tenure is now "4 years of experience", matching the CV'],
 ];
 
 // The public-ceiling rules (F12) -- model and vendor names, internal evaluation and index-size
@@ -110,6 +114,7 @@ const REQUIRED = [
   ['index.html', 'US$43', 'F6.3 - currency written explicitly'],
   ['index.html', 'FM106', 'F7.10 - the real WorkCover template'],
   ['index.html', 'plenarius.org', 'the product link'],
+  ['index.html', '4 years of experience', 'F10 - matches the CV AI Summary'],
 ];
 
 function walk(dir) {
