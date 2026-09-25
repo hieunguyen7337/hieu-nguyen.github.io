@@ -40,6 +40,11 @@ const sectionHref = (id: string) => `${homePath}#${id}`;
         </a>
       </li>
       <li>
+        <a href={sectionHref('volunteer')} data-section="volunteer" class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
+          Volunteer
+        </a>
+      </li>
+      <li>
         <a href={`${base}/blog/`} class="nav-link px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-white/[0.06] transition-all duration-200">
           Writing
         </a>
@@ -68,6 +73,7 @@ const sectionHref = (id: string) => `${homePath}#${id}`;
     <a href={sectionHref('projects')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Projects</a>
     <a href={sectionHref('experience')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Experience</a>
     <a href={sectionHref('education')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Education</a>
+    <a href={sectionHref('volunteer')} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Volunteer</a>
     <a href={`${base}/blog/`} class="mobile-nav-link text-xl text-slate-300 hover:text-white transition-colors">Writing</a>
   </div>
 </nav>

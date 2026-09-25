@@ -1,25 +1,56 @@
 ---
+// The first three categories are the CV's Skills section (AI variant) item for item;
+// scripts/sitecheck.mjs reads the .tex and fails the build if one is missing. Research areas are
+// site-only: each is backed by a project on this page, and reinforcement learning is
+// owner-confirmed for the website (cv/facts.md F7.16).
 const skillCategories = [
   {
-    label: 'NLP & LLMs',
-    skills: ['Transformer Models', 'LLM Fine-tuning', 'RAG Systems', 'NLP'],
-  },
-  {
-    label: 'Computer Vision',
-    skills: ['Person Re-Identification', 'Pose Estimation', 'Edge Deployment'],
-  },
-  {
-    label: 'Systems & Data',
-    skills: ['Go', 'PostgreSQL', 'pgvector', 'Vector Search', 'Quantisation'],
-  },
-  {
-    label: 'ML Engineering & Research',
+    label: 'AI/ML',
     skills: [
-      'MLOps',
-      'Model Deployment',
-      'Information Retrieval',
+      'RAG',
+      'Vector search and quantisation',
+      'Agentic workflows',
+      'LLM orchestration',
+      'Transformers',
+      'NLP',
+      'Speech recognition',
+      'Computer vision',
+      'Anomaly detection',
+    ],
+  },
+  {
+    label: 'Engineering',
+    skills: [
+      'Python',
+      'Go',
+      'PostgreSQL',
+      'pgvector',
+      'MongoDB',
+      'REST APIs',
+      'React',
+      'Docker',
+      'CI/CD',
+      'Data pipelines',
+    ],
+  },
+  {
+    label: 'Cloud & infrastructure',
+    skills: [
+      'Azure (Functions, Cosmos DB)',
+      'AWS (EC2, S3)',
+      'Hetzner',
+      'Cloudflare (WAF, R2 object storage)',
+      'Caddy',
+      'systemd',
+    ],
+  },
+  {
+    label: 'Research areas',
+    skills: [
+      'Person re-identification',
+      'Pose estimation',
       'Bioinformatics',
-      'Reinforcement Learning',
+      'Reinforcement learning',
     ],
   },
 ];
@@ -32,7 +63,7 @@ const skillCategories = [
       class="border border-white/[0.08] bg-white/[0.04] rounded-2xl p-8 md:p-10 backdrop-blur-sm hover:border-indigo-500/30 transition-all duration-300"
     >
       <p class="text-slate-400 leading-[1.9] mb-10" style="font-size: 1.05rem;">
-        I'm a Vietnamese AI engineer with 4 years of experience, based in Brisbane, Australia. In Vietnam, at FPT Software and Viettel Post, I built production AI systems ranging from acoustic anomaly detection platforms deployed on Samsung factory floors to audio call analysis systems with 90% accuracy in production. I moved to Australia to pursue a Master of Artificial Intelligence at QUT, where I work as a Research Assistant and hold leadership roles across two university tech clubs. Today, I also serve as Chief Technology Officer at Plenarius, building an open social platform for academic research.
+        I'm a Vietnamese AI engineer with 4 years of experience, based in Brisbane, Australia. In Vietnam, at FPT Software and Viettel Post, I built production AI systems ranging from an acoustic anomaly detection platform deployed on a Samsung factory floor to an audio call analysis system with 90% accuracy in production. I moved to Australia to pursue a Master of Artificial Intelligence at QUT, where I work as a Research Assistant and hold volunteer leadership roles in two university tech clubs. Today, I also serve as Chief Technology Officer at Plenarius, a research platform for academic papers, organisations, publishing, discussion and messaging, with AI-assisted search across its corpus.
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">

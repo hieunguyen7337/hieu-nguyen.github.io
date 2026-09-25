@@ -95,6 +95,13 @@ are checked-in binaries, so **editing the `.tex` does not change what visitors d
 `build.sh` runs and the output is copied over. Never imply the site's CV is current on the
 strength of a `.tex` edit alone.
 
+**The site must agree with the CV, and `npm run verify` enforces it.** `scripts/sitecheck.mjs`
+reads the AI variant straight from the `.tex` and fails if any role title, date, Experience
+bullet, Skills item, project award or stack item, degree, Volunteer entry or CV hyperlink is
+missing from the matching section of the homepage. So a CV edit is not finished until the site
+carries it too. Experience bullets on the site are the CV's verbatim (`src/data/experience.ts`);
+the site may add owner-confirmed detail after them, never replace them.
+
 Copy into `public/` as a separate deliberate step, not from `build.sh`. The `*_Print.pdf`
 black-and-white builds stay in `cv/build/` and are never shipped; a `cp cv/build/*.pdf` glob
 would ship them. Superseded PDFs go to `cv/previous/`.

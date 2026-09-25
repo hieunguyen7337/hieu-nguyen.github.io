@@ -42,12 +42,12 @@ export const projects: Project[] = [
     id: 'local-ai-workflow-platform',
     title: 'Local AI Workflow Platform',
     description:
-      'Local-first platform for authoring, running and visualising AI workflows from declarative YAML specs. Workflows validate through a Pydantic GraphSpec contract before they run. Compiled into LangGraph, the system supports approval interrupts during execution and carries eval coverage across workflows.',
+      'Local-first platform for authoring, running and visualising AI workflows from declarative YAML. Each workflow is validated through a Pydantic GraphSpec contract before being compiled into runnable graphs, with approval interrupts, rollback restore and eval coverage. The platform was presented at AgentCamp 2026, Brisbane Edition.',
     tier: 1,
-    badge: { label: 'Active · Workflow Platform', color: 'cyan' },
+    badge: { label: 'Presented · AgentCamp 2026', color: 'cyan' },
     primaryImage: 'AI_Agent_Local_Workflow_PLatform/PLatform_Workflow_sample.png',
     galleryImages: ['AI_Agent_Local_Workflow_PLatform/PLatform_Workflow_sample.png'],
-    tags: ['LangGraph', 'YAML Workflows', 'Pydantic', 'FastAPI', 'React Flow'],
+    tags: ['Python', 'LangGraph', 'FastAPI', 'React Flow', 'Pydantic', 'YAML'],
     links: [
       {
         label: 'GitHub',
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     id: 'cognilaw',
     title: 'Cognilaw',
     description:
-      'Built and evaluated a Retrieval-Augmented Generation pipeline designed for the legal profession. The core challenge was hallucination reduction: legal AI that cites non-existent cases is worse than no AI at all. Work focused on retrieval strategy design, grounded generation, answer validation, evaluation metrics, and iterative optimisation loops.',
+      'Evaluated and improved a hallucination-resistant retrieval-augmented generation pipeline designed for legal workflows. The core challenge was hallucination reduction: legal AI that cites non-existent cases is worse than no AI at all. Work focused on testing retrieval strategies, grounded generation and answer validation using retrieval and response-quality metrics.',
     tier: 1,
     badge: { label: 'AI Researcher · 2026', color: 'indigo' },
     primaryImage: 'cognilaw/cognilaw_basic_architecture.jfif',
@@ -127,7 +127,7 @@ export const projects: Project[] = [
     id: 'audio',
     title: 'Audio Call Analysis',
     description:
-      'Vietnamese-language call analysis system: Whisper fine-tuned on Vietnamese transcribes calls, then BERT classifiers detect offensive language and predict customer mood. Achieved 90% accuracy in production at a major telecom.',
+      'Vietnamese-language call analysis system: Whisper fine-tuned on Vietnamese transcribes calls, then BERT classifiers detect offensive language and predict customer mood. Achieved 90% accuracy in production at Viettel Post.',
     tier: 2,
     primaryImage: 'Audio_Call_Analysis/Whisper_architecture.png',
     galleryImages: ['Audio_Call_Analysis/Whisper_architecture.png'],
@@ -194,7 +194,7 @@ export const projects: Project[] = [
       'Tanda_hackathon_Safemind/Safe_mind_presentation.jfif',
       'Tanda_hackathon_Safemind/Safe_mind_team.jfif',
     ],
-    tags: ['LLM', 'Voice AI', 'OHS', 'Hackathon', 'Award Winner'],
+    tags: ['Python', 'Flask', 'OpenAI API', 'MongoDB', 'python-docx'],
   },
   {
     id: 'capture',
@@ -209,7 +209,7 @@ export const projects: Project[] = [
       'Capture_the_narrative/capture_the_narrative_heading%20image.png',
       'Capture_the_narrative/fake_social_media_homepage.png',
     ],
-    tags: ['GenAI', 'LLM', 'NLP', 'Competition', 'Award Winner'],
+    tags: ['LLMs', 'Multi-agent simulation', 'AWS EC2', 'S3'],
   },
 ];
 

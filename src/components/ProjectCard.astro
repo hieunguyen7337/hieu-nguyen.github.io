@@ -71,7 +71,7 @@ const galleryJson = JSON.stringify(allImages);
     }
     <div class="flex flex-wrap gap-1.5">
       {
-        project.tags.slice(0, 3).map((tag) => (
+        project.tags.map((tag) => (
           <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
             {tag}
           </span>

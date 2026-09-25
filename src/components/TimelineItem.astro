@@ -44,7 +44,15 @@ const photoGalleryJson = hasPhotos
       }
     </div>
 
-    <p class="text-slate-400 text-sm leading-[1.8]">{entry.description}</p>
+    {
+      entry.bullets.length === 1 ? (
+        <p class="text-slate-400 text-sm leading-[1.8]">{entry.bullets[0]}</p>
+      ) : (
+        <ul class="list-disc pl-5 space-y-1.5 text-slate-400 text-sm leading-[1.8] marker:text-indigo-400/70">
+          {entry.bullets.map((b) => <li>{b}</li>)}
+        </ul>
+      )
+    }
 
     {
       entry.links?.length && (
