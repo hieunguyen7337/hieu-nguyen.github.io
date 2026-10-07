@@ -23,7 +23,7 @@ BUILD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "build")
 # collide with a letter pair inside an unrelated word and report a failure that is not real.
 MARKERS = [
     ("Cognilaw role", "Cognilaw", {"ai", "data"}),
-    ("AI: retrieval evaluation", "evaluation across retrieval configurations", {"ai"}),
+    ("AI: retrieval evaluation", "evaluated retrieval configurations", {"ai"}),
     ("Data: pagination bug", "pagination correctness bug", {"data"}),
     ("Full: client-side islands", "client-side islands", {"fullstack"}),
     ("Full: seven dependencies", "seven direct", {"fullstack"}),
@@ -103,7 +103,12 @@ MARKERS = [
     ("Practice skill line gone", "Practice:", set()),
     ("quantisation != precision", "precision improvement", set()),
     ("no location line", "Brisbane, Australia", set()),
-    ("no TypeScript", "TypeScript", set()),
+    ("TypeScript evidence", "TypeScript", {"ai", "fullstack"}),
+    ("Sleep Sage role", "Sleep Sage", {"ai", "data", "fullstack"}),
+    ("current GPA", "GPA 6.538/7.0", {"ai", "data", "fullstack"}),
+    ("no stale GPA", "GPA 6.54/7.0", set()),
+    ("manuscript status", "Manuscript in preparation", {"ai", "data", "fullstack"}),
+    ("expected completion", "expected completion November 2026", {"ai", "data", "fullstack"}),
 ]
 
 # Absence checks whose needles are themselves private -- the claims-tier figure, model names,
@@ -218,7 +223,7 @@ def text_of(blob):
         ch = text[i]
         if ch == chr(92) and depth:
             nxt = text[i + 1] if i + 1 < n else ""
-            if nxt.isdigit():
+            if nxt and nxt in "01234567":
                 j = i + 1
                 octal = ""
                 while j < n and len(octal) < 3 and text[j] in "01234567":

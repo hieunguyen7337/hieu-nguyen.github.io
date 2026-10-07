@@ -1,6 +1,6 @@
 \documentclass[11pt, a4paper]{article}
 
-\usepackage[top=0.70in, bottom=0.70in, left=0.75in, right=0.75in]{geometry}
+\usepackage[top=0.55in, bottom=0.55in, left=0.65in, right=0.65in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -18,14 +18,25 @@
   {\large\bfseries\color{accent}}
   {}{0em}{}
   [\color{accent}\titlerule]
-\titlespacing{\section}{0pt}{14pt}{6pt}
+\titlespacing{\section}{0pt}{11pt}{5pt}
+
+% Keep a heading with its first content without adding a package dependency.
+\newcommand{\needroom}[1]{%
+  \par\begingroup
+  \dimen0=#1\relax
+  \dimen2=\pagegoal\relax\advance\dimen2 by -\pagetotal\relax
+  \ifdim\dimen0>\dimen2\relax\newpage\fi
+  \endgroup
+}
 
 \newcommand{\role}[4]{%
+  \needroom{6\baselineskip}%
   \noindent\textbf{#1}\hfill\textcolor{muted}{#2}\\
   \textit{#3}\hfill\textcolor{muted}{#4}\vspace{3pt}%
 }
 
 \newcommand{\project}[3]{%
+  \needroom{7\baselineskip}%
   \noindent\textbf{#1}%
   \ifx&#2&\else\hfill\textcolor{muted}{\small #2}\fi\\[-2pt]
   \textcolor{muted}{\small\textit{Stack: #3}}\vspace{3pt}%
@@ -101,15 +112,15 @@
 \section{Summary}
 
 \AI{
-AI engineer with 4 years of experience building and deploying machine learning systems across retrieval, NLP, speech recognition and computer vision. Currently CTO at Plenarius, a research platform for academic papers, organisations, publishing, discussion and messaging, with AI-assisted search across its corpus. Previously worked on production AI systems at Viettel Post and FPT Software. Completing a Master of Artificial Intelligence at QUT in November 2026.
+AI engineer with 4 years of experience building production systems across retrieval, NLP, speech recognition and computer vision. Hands-on CTO work at Plenarius and Sleep Sage spans Go and Python services, mobile interfaces and tested AI workflows. Previously worked on production AI at Viettel Post and FPT Software; currently researching tool-using agents at QUT. Completing a Master of Artificial Intelligence, with expected completion in November 2026.
 }
 
 \DATA{
-Engineer building and operating production data infrastructure at scale on one database. As CTO at Plenarius, operates a PostgreSQL platform over roughly 200,000 papers, where storage layout, indexing and query plans replace adding infrastructure. Reduced an author profile from 7.07 s to sub-second via a partial index with an INCLUDE covering column. Prior data and pipeline work at Viettel Post and FPT Software. Completing a Master of Artificial Intelligence at QUT, finishing November 2026.
+Engineer building and operating production data infrastructure. As CTO at Plenarius, operates a PostgreSQL platform over roughly 200,000 papers, tuning storage, indexing and query plans. Reduced an author profile from 7.07 s to sub-second through a partial covering index. At Sleep Sage, develops tested document-processing workflows. Prior production work at Viettel Post and FPT Software. Completing a Master of Artificial Intelligence at QUT, with expected completion in November 2026.
 }
 
 \FULL{
-Engineer shipping and operating whole systems front to back, keeping them deliberately small. At Plenarius, a Go runtime serves 96 server-rendered pages and 205 public \texttt{/api/} paths from one binary. The architecture prioritises restraint: seven direct dependencies, no ORM, and React as non-hydrating islands rather than a single-page application. Prior production engineering at FPT Software and Viettel Post. Completing a Master of Artificial Intelligence at QUT, finishing November 2026.
+Engineer shipping and operating whole systems front to back. At Plenarius, a Go runtime serves 96 server-rendered pages and 205 public \texttt{/api/} paths from one binary, with seven direct dependencies, no ORM and isolated React islands. At Sleep Sage, develops React Native interfaces and tested FastAPI processing. Prior production engineering at FPT Software and Viettel Post. Completing a Master of Artificial Intelligence at QUT, with expected completion in November 2026.
 }
 
 \section{Skills}
@@ -117,7 +128,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \AI{
 \begin{itemize}
 \item \textbf{AI/ML:} RAG, vector search and quantisation, agentic workflows, LLM orchestration, transformers, NLP, speech recognition, computer vision, anomaly detection.
-\item \textbf{Engineering:} Python, Go, PostgreSQL, pgvector, MongoDB, REST APIs, React, Docker, CI/CD, data pipelines.
+\item \textbf{Engineering:} Python, Go, TypeScript, PostgreSQL, pgvector, MongoDB, REST APIs, React, React Native, Expo, FastAPI, Docker, CI/CD, data pipelines.
 \item \textbf{Cloud \& infrastructure:} Azure (Functions, Cosmos DB), AWS (EC2, S3), Hetzner, Cloudflare (WAF, R2 object storage), Caddy, systemd.
 \end{itemize}
 }
@@ -132,7 +143,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 
 \FULL{
 \begin{itemize}
-\item \textbf{Backend and frontend:} Go, Python, SQL, PostgreSQL, MongoDB, REST API design, server-rendered templates, job queues, background workers, FastAPI, React islands, esbuild, no-framework JavaScript.
+\item \textbf{Backend and frontend:} Go, Python, TypeScript, SQL, PostgreSQL, MongoDB, REST API design, server-rendered templates, job queues, background workers, FastAPI, React islands, React Native, Expo, esbuild, JavaScript.
 \item \textbf{Delivery:} Docker, CI/CD, generated configuration with reproducibility checks, migrations, deployment and operation of live services.
 \item \textbf{Cloud \& infrastructure:} Azure (Functions, Cosmos DB), AWS (EC2, S3), Hetzner, Cloudflare (WAF, R2 object storage), Caddy, systemd.
 \end{itemize}
@@ -140,12 +151,20 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 
 \section{Experience}
 
+\role{Chief Technology Officer}{Sep 2026 -- Present}
+{Sleep Sage}{}
+\begin{itemize}
+\item Lead technical development of an education app that turns PDFs and text into source-grounded concepts, user-approved learning cues and private speech clips.
+\item Improved React Native and Expo session editing, audio playback and first-night setup, and strengthened FastAPI processing with regression tests for validation, authentication and playback.
+\end{itemize}
+\vspace{4pt}
+
 \role{Chief Technology Officer}{Apr 2026 -- Present}
 {\href{https://plenarius.org}{Plenarius (formerly Calimac)}\PRINT{\enspace|\enspace plenarius.org}}{}
 \AI{
 \begin{itemize}
 \item Inherited a PHP-based platform and led its migration to Go and PostgreSQL, moving 96 server-rendered pages, 205 API paths and the recommendation system onto the new production stack with no PHP in the request path.
-\item Designed the vector search architecture over roughly 200,000 papers and integrated paid AI features into the platform, including dimensionality reduction, quantised vector storage, exact re-scoring and evaluation across retrieval configurations.
+\item Designed vector search over roughly 200,000 papers and evaluated retrieval configurations, balancing response quality, query cost and infrastructure trade-offs.
 \item Run the production platform on a single 8-vCPU server for roughly US\$43 per month all in, tracking retrieval quality, cost per query and infrastructure trade-offs.
 \end{itemize}
 }
@@ -154,7 +173,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \begin{itemize}
 \item Owned the core PostgreSQL database tier, actively tuning query execution behaviour and managing schema migrations directly without relying on framework defaults.
 \item Analysed query execution plans and redesigned access paths, uncovering and fixing a pagination correctness bug caused by duplicate ordering timestamps while systematically accelerating high-traffic database endpoints.
-\item Designed a multi-stage vector search architecture combining dimensional reduction, quantised storage, and an exact re-scoring stage to minimise index footprint while preserving retrieval quality across the corpus.
+\item Evaluated multi-stage vector search designs combining dimensional reduction, quantised storage and exact re-scoring, comparing index footprint with retrieval quality.
 \end{itemize}
 }
 
@@ -166,7 +185,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \end{itemize}
 }
 
-\vspace{8pt}
+\vspace{4pt}
 
 \NOTFULL{
 \role{AI Researcher}{Jan 2026 -- Jun 2026}
@@ -175,7 +194,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \item Evaluated and improved a hallucination-resistant RAG pipeline for legal workflows, testing retrieval strategies, grounded generation and answer validation using retrieval and response-quality metrics.
 \end{itemize}
 
-\vspace{8pt}
+\vspace{4pt}
 }
 
 \role{Research Assistant}{Sep 2025 -- Present}
@@ -185,7 +204,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \item Cleaned and prepared biomedical literature datasets, then fine-tuned transformer models for protein-protein interaction relation extraction.
 \end{itemize}
 
-\vspace{8pt}
+\vspace{4pt}
 
 \role{AI Software Engineer}{Apr 2023 -- Nov 2024}
 {Viettel Post}{}
@@ -194,7 +213,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \item Trained an Extra Trees classifier for customer churn prediction, reaching 80\% accuracy.
 \end{itemize}
 
-\vspace{8pt}
+\vspace{4pt}
 
 \role{AI Software Engineer}{Oct 2021 -- Mar 2023}
 {FPT Software}{}
@@ -202,7 +221,7 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \item Contributed to FPT's \href{https://fptsoftware.com/newsroom/news-and-press-releases/news/fpt-achieves-us-patent-for-advanced-acoustic-anomaly-detection-technology}{US-patented} Sound AI acoustic anomaly-detection platform, deployed on a Samsung factory floor. Built its Python backend on Azure Functions, supporting model serving, CI/CD and production monitoring.
 \end{itemize}
 
-\vspace{8pt}
+\vspace{4pt}
 
 \role{Research Intern, Computer Vision}{Apr 2021 -- Jul 2021}
 {Asilla}{}
@@ -211,6 +230,11 @@ Engineer shipping and operating whole systems front to back, keeping them delibe
 \end{itemize}
 
 \section{Projects \& Awards}
+
+\project{Planner and executor collaboration}{Manuscript in preparation}
+{Python, AppWorld, BFCL, Agent evaluation}\\
+Co-author with Kien Nguyen Thanh at QUT of \textit{How Should a Stronger Planner Help a Smaller Agent? Preregistered Tests of When to Hand Over and What to Send}. Built tool-using agent orchestration and paired replay evaluations comparing handover, advice and direct-action strategies with statistical analysis and cost-quality trade-offs.
+\vspace{4pt}
 
 \project{\href{https://github.com/hieunguyen7337/AI_Agent_Local_Workflow_PLatform}{Local AI Workflow Platform}}{Presented \enspace|\enspace AgentCamp 2026, Brisbane Edition}
 {Python, LangGraph, FastAPI, React Flow, Pydantic, YAML}\\
@@ -231,10 +255,11 @@ Voice-driven workplace incident capture that pre-fills WorkCover claim forms, co
 \section{Education}
 
 \role{Master of Artificial Intelligence}{2025 -- 2026}
-{Queensland University of Technology \enspace|\enspace GPA 6.54/7.0}
+{Queensland University of Technology \enspace|\enspace GPA 6.538/7.0}
 {}
+\\Final semester, Semester 2 2026; expected completion November 2026.
 
-\vspace{8pt}
+\vspace{4pt}
 
 \role{Bachelor of Information Technology}{2018 -- 2021}
 {University of Science and Technology of Hanoi}
@@ -242,7 +267,7 @@ Voice-driven workplace incident capture that pre-fills WorkCover claim forms, co
 
 \section{Volunteer}
 
-\volunteer{Vice President}{Oct 2025 -- Present}
+\volunteer{Vice President}{Oct 2025 -- Oct 2026}
 {QUT The Emerging Coders Hub (TECH)}
 {Ran coding and IT workshops teaching beginners to build chatbots, personal websites and AI agents, and organised career events including mock interview sessions, progressing from General Executive (Jun--Oct 2025).}
 

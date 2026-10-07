@@ -37,12 +37,21 @@ const FPT_PATENT =
 
 export const experience: ExperienceEntry[] = [
   {
+    id: 'sleep-sage',
+    company: 'Sleep Sage',
+    roles: [{ title: 'Chief Technology Officer', period: 'September 2026 - Present' }],
+    bullets: [
+      'Lead technical development of an education app that turns PDFs and text into source-grounded concepts, user-approved learning cues and private speech clips.',
+      'Improved React Native and Expo session editing, audio playback and first-night setup, and strengthened FastAPI processing with regression tests for validation, authentication and playback.',
+    ],
+  },
+  {
     id: 'plenarius',
     company: 'Plenarius (formerly Calimac)',
     roles: [{ title: 'Chief Technology Officer', period: 'April 2026 – Present' }],
     bullets: [
       'Inherited a PHP-based platform and led its migration to Go and PostgreSQL, moving 96 server-rendered pages, 205 API paths and the recommendation system onto the new production stack with no PHP in the request path.',
-      'Designed the vector search architecture over roughly 200,000 papers and integrated paid AI features into the platform, including dimensionality reduction, quantised vector storage, exact re-scoring and evaluation across retrieval configurations.',
+      'Designed vector search over roughly 200,000 papers and evaluated retrieval configurations, balancing response quality, query cost and infrastructure trade-offs.',
       'Run the production platform on a single 8-vCPU server for roughly US$43 per month all in, tracking retrieval quality, cost per query and infrastructure trade-offs.',
     ],
     links: [{ label: 'Website', url: 'https://plenarius.org' }],
@@ -112,7 +121,7 @@ export const volunteer: ExperienceEntry[] = [
     company: 'QUT The Emerging Coders Hub (TECH)',
     location: 'Brisbane, Queensland, Australia',
     roles: [
-      { title: 'Vice President', period: 'October 2025 – Present' },
+      { title: 'Vice President', period: 'October 2025 - October 2026' },
       { title: 'General Executive', period: 'June 2025 – October 2025' },
     ],
     bullets: [
@@ -151,8 +160,8 @@ export const education: EducationEntry[] = [
   {
     institution: 'Queensland University of Technology',
     degree: 'Master of Artificial Intelligence',
-    period: 'February 2025 – November 2026',
-    grade: 'GPA 6.54 / 7.0',
+    period: 'February 2025 - November 2026 (expected)',
+    grade: 'GPA 6.538 / 7.0 · Final semester, Semester 2 2026',
   },
   {
     institution: 'University of Science and Technology of Hanoi',

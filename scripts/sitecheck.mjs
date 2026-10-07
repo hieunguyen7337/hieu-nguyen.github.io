@@ -33,7 +33,8 @@ const FORBIDDEN = [
   ['millions of customer calls', 'F8 - unconfirmed volume claim'],
 
   // House style, and the ledger value. (F1.9, CLAUDE.md)
-  ['6.5 / 7.0', 'F1.9 - the GPA is 6.54, not 6.5'],
+  ['6.5 / 7.0', 'F1.9/F13 - the corrected GPA is 6.538'],
+  ['6.54 / 7.0', 'F13 - superseded rounded GPA'],
 
   // Cognilaw ended June 2026. (F1.4)
   ['Currently at Cognilaw', 'F1.4 - role ended June 2026'],
@@ -45,7 +46,6 @@ const FORBIDDEN = [
   ['A$46', 'F6.3 - superseded intermediate cost'],
 
   // Never claimed anywhere. (F8)
-  ['TypeScript', 'F8 - none in the repo'],
   ['Kubernetes', 'F8 - not used, no honest claim to make'],
   ['waitlist', 'F8 - no evidence, dropped'],
   ['Startmate', 'F8 - no public trace, dropped'],
@@ -115,7 +115,11 @@ const REQUIRED = [
   ['index.html', 'Plenarius', 'the current role must appear on the homepage'],
   ['index.html', 'CTO at Plenarius', 'hero subtitle'],
   ['index.html', 'Chief Technology Officer', 'timeline role title'],
-  ['index.html', 'GPA 6.54 / 7.0', 'F1.9 - real precision'],
+  ['index.html', 'GPA 6.538 / 7.0', 'F13 - confirmed current grade'],
+  ['index.html', 'Sleep Sage', 'F13 - current CTO role'],
+  ['index.html', 'TypeScript', 'F13 - verified Sleep Sage work'],
+  ['index.html', 'Manuscript in preparation', 'F13 - publication status'],
+  ['index.html', 'expected completion in November 2026', 'F13 - degree remains in progress'],
   ['index.html', 'Azure Functions', 'F7.2 - the Sound AI backend'],
   ['index.html', 'efficiency improvement', 'F7.6 - the corrected pose claim'],
   ['index.html', 'zero PHP in the request path', 'F8 - the exact phrasing the ledger mandates'],
@@ -178,7 +182,7 @@ function detex(s) {
 
 const fullMonths = (s) => s.replace(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b/g, (m) => MONTHS[m]);
 // Case and whitespace are presentation: the CV's "GPA 6.54/7.0" is "GPA 6.54 / 7.0" here.
-const loose = (s) => s.toLowerCase().replace(/\s+/g, '');
+const loose = (s) => s.toLowerCase().replace(/[–—]/g, '-').replace(/\s+/g, '');
 const splitTop = (s) => {
   const out = [];
   let depth = 0;
@@ -331,7 +335,7 @@ function cvParity(html) {
     const years = detex(d).match(/^(\d{4}) – (\d{4})$/);
     if (years) {
       checked++;
-      if (!new RegExp(`(?:[a-z]+)?${years[1]}–(?:[a-z]+)?${years[2]}`).test(edu))
+      if (!new RegExp(`(?:[a-z]+)?${years[1]}-(?:[a-z]+)?${years[2]}`).test(edu))
         problems.push(`Education: no period ${years[1]} – ${years[2]}`);
     }
   }

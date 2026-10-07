@@ -126,4 +126,4 @@ before it lands.
 - Australian / British spelling throughout.
 - Concrete and specific over promotional. Name the system, the scale, the result. Avoid
   "passionate", "cutting-edge", "leveraging".
-- Metrics keep their real precision (GPA is 6.54, not 6.5).
+- Metrics keep their real precision (current confirmed GPA is 6.538/7.0, not the superseded rounded 6.54).

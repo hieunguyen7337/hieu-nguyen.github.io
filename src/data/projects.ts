@@ -22,10 +22,28 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'sleep-sage',
+    title: 'Sleep Sage',
+    description:
+      'As CTO since September 2026, lead technical development of an education app that turns PDFs and text into source-grounded concepts, user-approved learning cues and private speech clips. Improved mobile session editing, audio playback and first-night setup, with regression tests for processing, validation, authentication and playback.',
+    tier: 1,
+    badge: { label: 'Active · CTO', color: 'cyan' },
+    tags: ['TypeScript', 'React Native', 'Expo', 'Python', 'FastAPI'],
+  },
+  {
+    id: 'planner-executor-collaboration',
+    title: 'Planner and executor collaboration',
+    description:
+      'Co-author with Kien Nguyen Thanh at QUT of How Should a Stronger Planner Help a Smaller Agent? Preregistered Tests of When to Hand Over and What to Send. Built tool-using agent orchestration and paired replay evaluations comparing handover, advice and direct-action strategies, with statistical analysis and cost-quality trade-offs. The manuscript is in preparation.',
+    tier: 1,
+    badge: { label: 'Manuscript in preparation', color: 'indigo' },
+    tags: ['Python', 'AppWorld', 'BFCL', 'Agent evaluation'],
+  },
+  {
     id: 'plenarius',
     title: 'Plenarius',
     description:
-      'Inherited a PHP platform and led the migration to Go and PostgreSQL for Plenarius, an open platform for academic research with vector search over roughly 200,000 papers. Production serves 96 server-rendered pages and 205 public API paths from one binary, with zero PHP in the request path. The retrieval architecture pairs a 1-bit binary quantisation prefilter with an exact re-scoring pass. The platform runs on one 8-vCPU server for roughly US$43 a month all in.',
+      'Inherited a PHP platform and led the migration to Go and PostgreSQL for Plenarius, an open platform for academic research with vector search over roughly 200,000 papers. Production serves 96 server-rendered pages and 205 public API paths from one binary, with zero PHP in the request path. Evaluated retrieval configurations to balance response quality, query cost and infrastructure trade-offs. The platform runs on one 8-vCPU server for roughly US$43 a month all in.',
     tier: 1,
     badge: { label: 'Active · CTO', color: 'cyan' },
     primaryImage: 'plenarius/plenarius_search.png',
