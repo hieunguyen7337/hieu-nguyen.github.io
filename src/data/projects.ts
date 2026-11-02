@@ -109,7 +109,7 @@ export const projects: Project[] = [
     id: 'nti',
     title: 'NTI Insurance Fraud Detection Dashboard',
     description:
-      'Leading a team of 30+ QUT AIML Society members to build a predictive analytics dashboard on NTI insurance data, detecting fraudulent and anomalous claims and forecasting claim delays. Combines data science, software engineering, and ML model development on a real-world industry dataset.',
+      'Led a team of 30+ QUT AIML Society members to build a predictive analytics dashboard on NTI insurance data, detecting fraudulent and anomalous claims and forecasting claim delays. Combines data science, software engineering, and ML model development on a real-world industry dataset.',
     tier: 1,
     badge: { label: 'Team Lead · 30+ Members', color: 'teal' },
     primaryImage: 'QUT_AIML/QUT_AIML_first_NTI_project_night.jfif',
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     id: 'protein',
     title: 'Relation Extraction for Protein-Protein Interaction',
     description:
-      'Ongoing QUT research on relation extraction for protein-protein interaction. The project fine-tunes transformer models over biomedical literature to extract protein names and their interaction relationships. The resulting pipeline processes raw academic text and turns it into structured output.',
+      'QUT research on relation extraction for protein-protein interaction. The project fine-tunes transformer models over biomedical literature to extract protein names and their interaction relationships. The resulting pipeline processes raw academic text and turns it into structured output.',
     tier: 2,
     badge: { label: 'QUT Research', color: 'indigo' },
     primaryImage:

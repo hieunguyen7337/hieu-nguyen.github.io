@@ -40,6 +40,13 @@ const FORBIDDEN = [
   ['Currently at Cognilaw', 'F1.4 - role ended June 2026'],
   ['January 2026 – Present', 'F1.4 - role ended June 2026'],
 
+  // The Master's was completed in November 2026, and the QUT Research Assistant and AI & ML
+  // Society roles ended then too. (F14)
+  ['expected completion', 'F14 - degree completed November 2026'],
+  ['final semester', 'F14 - degree completed November 2026'],
+  ['Completing a Master', 'F14 - degree completed November 2026'],
+  ['September 2025 – Present', 'F14 - RA and AI & ML Society roles ended November 2026'],
+
   // Superseded cost figures. The current one is roughly US$43 a month. (F6.3)
   ['$20 a month', 'F6.3 - superseded cost'],
   ['$20 per month', 'F6.3 - superseded cost'],
@@ -115,11 +122,11 @@ const REQUIRED = [
   ['index.html', 'Plenarius', 'the current role must appear on the homepage'],
   ['index.html', 'CTO at Plenarius', 'hero subtitle'],
   ['index.html', 'Chief Technology Officer', 'timeline role title'],
-  ['index.html', 'GPA 6.538 / 7.0', 'F13 - confirmed current grade'],
+  ['index.html', 'GPA 6.538 / 7.0 (current)', 'F13/F14 - current grade, not final'],
   ['index.html', 'Sleep Sage', 'F13 - current CTO role'],
   ['index.html', 'TypeScript', 'F13 - verified Sleep Sage work'],
   ['index.html', 'Manuscript in preparation', 'F13 - publication status'],
-  ['index.html', 'expected completion in November 2026', 'F13 - degree remains in progress'],
+  ['index.html', 'Completed November 2026', 'F14 - degree completed November 2026'],
   ['index.html', 'Azure Functions', 'F7.2 - the Sound AI backend'],
   ['index.html', 'efficiency improvement', 'F7.6 - the corrected pose claim'],
   ['index.html', 'zero PHP in the request path', 'F8 - the exact phrasing the ledger mandates'],

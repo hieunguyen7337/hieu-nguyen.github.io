@@ -44,6 +44,7 @@ export const experience: ExperienceEntry[] = [
       'Lead technical development of an education app that turns PDFs and text into source-grounded concepts, user-approved learning cues and private speech clips.',
       'Improved React Native and Expo session editing, audio playback and first-night setup, and strengthened FastAPI processing with regression tests for validation, authentication and playback.',
     ],
+    links: [{ label: 'Website', url: 'https://sleepsage.app' }],
   },
   {
     id: 'plenarius',
@@ -73,7 +74,7 @@ export const experience: ExperienceEntry[] = [
     id: 'qut-ra',
     company: 'Queensland University of Technology',
     location: 'Brisbane, Queensland, Australia',
-    roles: [{ title: 'Research Assistant', period: 'September 2025 – Present' }],
+    roles: [{ title: 'Research Assistant', period: 'September 2025 – November 2026' }],
     bullets: [
       'Evaluated and engineered an agentic person re-identification system combining appearance, body composition, gait and physical attributes through confidence-weighted voting.',
       'Cleaned and prepared biomedical literature datasets, then fine-tuned transformer models for protein-protein interaction relation extraction.',
@@ -142,7 +143,7 @@ export const volunteer: ExperienceEntry[] = [
     company: 'QUT AI & ML Society',
     location: 'Brisbane, Queensland, Australia',
     roles: [
-      { title: 'Project Manager', period: 'September 2025 – Present' },
+      { title: 'Project Manager', period: 'September 2025 – November 2026' },
       { title: 'Project Officer', period: 'August 2025 – September 2025' },
     ],
     bullets: [
@@ -160,8 +161,8 @@ export const education: EducationEntry[] = [
   {
     institution: 'Queensland University of Technology',
     degree: 'Master of Artificial Intelligence',
-    period: 'February 2025 - November 2026 (expected)',
-    grade: 'GPA 6.538 / 7.0 · Final semester, Semester 2 2026',
+    period: 'February 2025 - November 2026',
+    grade: 'GPA 6.538 / 7.0 (current) · Completed November 2026',
   },
   {
     institution: 'University of Science and Technology of Hanoi',

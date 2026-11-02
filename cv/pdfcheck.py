@@ -105,10 +105,14 @@ MARKERS = [
     ("no location line", "Brisbane, Australia", set()),
     ("TypeScript evidence", "TypeScript", {"ai", "fullstack"}),
     ("Sleep Sage role", "Sleep Sage", {"ai", "data", "fullstack"}),
-    ("current GPA", "GPA 6.538/7.0", {"ai", "data", "fullstack"}),
+    ("current GPA, labelled not final", "GPA 6.538/7.0 (current)", {"ai", "data", "fullstack"}),
     ("no stale GPA", "GPA 6.54/7.0", set()),
     ("manuscript status", "Manuscript in preparation", {"ai", "data", "fullstack"}),
-    ("expected completion", "expected completion November 2026", {"ai", "data", "fullstack"}),
+    # Owner-confirmed 2 November 2026 (F14): the degree is complete; the GPA is not yet final.
+    ("degree completed", "Completed November 2026", {"ai", "data", "fullstack"}),
+    ("no expected completion", "expected completion", set()),
+    ("no final semester", "Final semester", set()),
+    ("AI: QUT research in past tense", "researched tool-using agents at QUT", {"ai"}),
 ]
 
 # Absence checks whose needles are themselves private -- the claims-tier figure, model names,
@@ -135,6 +139,7 @@ LINKS = [
     ("LinkedIn", "linkedin.com/in/", {"ai", "data", "fullstack"}),
     ("GitHub profile", "github.com/hieunguyen7337", {"ai", "data", "fullstack"}),
     ("Plenarius product", "plenarius.org", {"ai", "data", "fullstack"}),
+    ("Sleep Sage product", "sleepsage.app", {"ai", "data", "fullstack"}),
     # Cognilaw is dropped from the Full Stack variant, so its link must go with it.
     ("Cognilaw site", "cognilawai.com", {"ai", "data"}),
     # Third-party confirmation of the strongest credential on the CV, on the awarding company's
