@@ -32,12 +32,13 @@ export const projects: Project[] = [
   },
   {
     id: 'planner-executor-collaboration',
-    title: 'Planner and executor collaboration',
+    title: 'Does Fine-Tuning Still Pay Once a Stronger Planner Starts?',
     description:
-      'Co-author with Kien Nguyen Thanh at QUT of How Should a Stronger Planner Help a Smaller Agent? Preregistered Tests of When to Hand Over and What to Send. Built tool-using agent orchestration and paired replay evaluations comparing handover, advice and direct-action strategies, with statistical analysis and cost-quality trade-offs. The manuscript is in preparation.',
+      'Co-author with Kien Nguyen Thanh at QUT of "Does Fine-Tuning Still Pay Once a Stronger Planner Starts?" (Zenodo preprint, Nov 2026). Built tool-using agent orchestration and paired replay evaluations comparing handover, advice and direct-action strategies, with statistical analysis and cost-quality trade-offs.',
     tier: 1,
-    badge: { label: 'Manuscript in preparation', color: 'indigo' },
+    badge: { label: 'Preprint, Zenodo 2026', color: 'indigo' },
     tags: ['Python', 'AppWorld', 'BFCL', 'Agent evaluation'],
+    links: [{ label: 'Preprint', url: 'https://doi.org/10.5281/zenodo.23882361' }],
   },
   {
     id: 'plenarius',
@@ -56,6 +57,21 @@ export const projects: Project[] = [
     links: [{ label: 'Website', url: 'https://plenarius.org' }],
   },
   // ── TIER 1: Featured Research & Active Work ──────────────────────────────
+  {
+    id: 'claude-usage-optimizer',
+    title: 'Claude Usage Optimizer',
+    description:
+      'Built an efficient multi-agent orchestration kit for Claude Code: a premium model plans and reviews while cheaper worker models implement. Cut premium-model spend by up to 64% and total cost by about half versus plain Claude Code on real development tasks, at slightly faster wall-clock time. Tracked 381 real runs across 11 worker lanes, with 97% of reviewed work usable. Runs on Windows and Linux; macOS, Codex and Amp support planned.',
+    tier: 1,
+    badge: { label: 'Open Source · MIT', color: 'teal' },
+    tags: ['Claude Code', 'multi-agent orchestration', 'Python'],
+    links: [
+      {
+        label: 'GitHub',
+        url: 'https://github.com/hieunguyen7337/claude-usage-optimizer-releases',
+      },
+    ],
+  },
   {
     id: 'local-ai-workflow-platform',
     title: 'Local AI Workflow Platform',

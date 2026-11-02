@@ -107,7 +107,7 @@ MARKERS = [
     ("Sleep Sage role", "Sleep Sage", {"ai", "data", "fullstack"}),
     ("current GPA, labelled not final", "GPA 6.538/7.0 (current)", {"ai", "data", "fullstack"}),
     ("no stale GPA", "GPA 6.54/7.0", set()),
-    ("manuscript status", "Manuscript in preparation", {"ai", "data", "fullstack"}),
+    ("manuscript status", "Preprint, Zenodo 2026", {"ai", "data", "fullstack"}),
     # Owner-confirmed 2 November 2026 (F14): the degree is complete; the GPA is not yet final.
     ("degree completed", "Completed November 2026", {"ai", "data", "fullstack"}),
     ("no expected completion", "expected completion", set()),

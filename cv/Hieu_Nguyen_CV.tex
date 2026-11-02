@@ -1,6 +1,6 @@
 \documentclass[11pt, a4paper]{article}
 
-\usepackage[top=0.55in, bottom=0.55in, left=0.65in, right=0.65in]{geometry}
+\usepackage[top=0.45in, bottom=0.45in, left=0.65in, right=0.65in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -18,7 +18,7 @@
   {\large\bfseries\color{accent}}
   {}{0em}{}
   [\color{accent}\titlerule]
-\titlespacing{\section}{0pt}{11pt}{5pt}
+\titlespacing{\section}{0pt}{9pt}{4pt}
 
 % Keep a heading with its first content without adding a package dependency.
 \newcommand{\needroom}[1]{%
@@ -231,10 +231,16 @@ Engineer shipping and operating whole systems front to back. At Plenarius, a Go 
 
 \section{Projects \& Awards}
 
-\project{Planner and executor collaboration}{Manuscript in preparation}
+\project{\href{https://doi.org/10.5281/zenodo.23882361}{Does Fine-Tuning Still Pay Once a Stronger Planner Starts?}}{Preprint, Zenodo 2026}
 {Python, AppWorld, BFCL, Agent evaluation}\\
-Co-author with Kien Nguyen Thanh at QUT of \textit{How Should a Stronger Planner Help a Smaller Agent? Preregistered Tests of When to Hand Over and What to Send}. Built tool-using agent orchestration and paired replay evaluations comparing handover, advice and direct-action strategies with statistical analysis and cost-quality trade-offs.
+Co-author with Kien Nguyen Thanh at QUT of ``Does Fine-Tuning Still Pay Once a Stronger Planner Starts?'' (Zenodo preprint, Nov 2026). Built tool-using agent orchestration and paired replay evaluations comparing handover, advice and direct-action strategies with statistical analysis and cost-quality trade-offs.
 \vspace{4pt}
+
+\project{\href{https://github.com/hieunguyen7337/claude-usage-optimizer-releases}{Claude Usage Optimizer}}{Open Source \enspace|\enspace MIT}
+{Claude Code, multi-agent orchestration, Python}\\
+Built an efficient multi-agent orchestration kit for Claude Code: a premium model plans and reviews while cheaper worker models implement. Cut premium-model spend by up to 64\% and total cost by about half versus plain Claude Code on real development tasks, at slightly faster wall-clock time. Tracked 381 real runs across 11 worker lanes, with 97\% of reviewed work usable. Runs on Windows and Linux; macOS, Codex and Amp support planned.
+
+\vspace{6pt}
 
 \project{\href{https://github.com/hieunguyen7337/AI_Agent_Local_Workflow_PLatform}{Local AI Workflow Platform}}{Presented \enspace|\enspace AgentCamp 2026, Brisbane Edition}
 {Python, LangGraph, FastAPI, React Flow, Pydantic, YAML}\\

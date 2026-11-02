@@ -125,7 +125,7 @@ const REQUIRED = [
   ['index.html', 'GPA 6.538 / 7.0 (current)', 'F13/F14 - current grade, not final'],
   ['index.html', 'Sleep Sage', 'F13 - current CTO role'],
   ['index.html', 'TypeScript', 'F13 - verified Sleep Sage work'],
-  ['index.html', 'Manuscript in preparation', 'F13 - publication status'],
+  ['index.html', 'Preprint, Zenodo 2026', 'F13 - publication status'],
   ['index.html', 'Completed November 2026', 'F14 - degree completed November 2026'],
   ['index.html', 'Azure Functions', 'F7.2 - the Sound AI backend'],
   ['index.html', 'efficiency improvement', 'F7.6 - the corrected pose claim'],
